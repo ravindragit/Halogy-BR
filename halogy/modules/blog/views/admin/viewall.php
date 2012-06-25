@@ -12,9 +12,9 @@
 
 <table class="default clear">
 	<tr>
-		<th><?php echo order_link('/admin/blog/viewall','posttitle','Post'); ?></th>
-		<th><?php echo order_link('/admin/blog/viewall','datecreated','Date'); ?></th>
-		<th class="narrow"><?php echo order_link('/admin/blog/viewall','published','Published'); ?></th>
+		<th><?php echo order_link('/admin/blog/viewall','posttitle','Chamadas'); ?></th>
+		<th><?php echo order_link('/admin/blog/viewall','datecreated','Data'); ?></th>
+		<th class="narrow"><?php echo order_link('/admin/blog/viewall','published','Publicada'); ?></th>
 		<th class="tiny">&nbsp;</th>
 		<th class="tiny">&nbsp;</th>
 	</tr>

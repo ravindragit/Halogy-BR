@@ -35,11 +35,11 @@ class Blog extends MX_Controller {
 		// get site permissions and redirect if it don't have access to this module
 		if (!$this->permission->sitePermissions)
 		{
-			show_error('You do not have permission to view this page');
+			show_error('Você não tem permissão para visualizar esta página.');
 		}
 		if (!in_array($this->uri->segment(1), $this->permission->sitePermissions))
 		{
-			show_error('You do not have permission to view this page');
+			show_error('Você não tem permissão para visualizar esta página.');
 		}
 
 		// load models and modules
@@ -53,7 +53,7 @@ class Blog extends MX_Controller {
 			foreach($cats as $cat)
 			{
 				$this->partials['blog:categories'][] = array(
-					'category:link' => site_url('/blog/'.$cat['catSafe']),
+					'category:link'  => site_url('/blog/'.$cat['catSafe']),
 					'category:title' => $cat['catName'],
 					'category:count' => $cat['numPosts']
 				);
@@ -66,7 +66,7 @@ class Blog extends MX_Controller {
 			foreach($archive as $date)
 			{
 				$this->partials['blog:archive'][] = array(
-					'archive:link' => site_url('/blog/'.$date['year'].'/'.$date['month'].'/'),
+					'archive:link'  => site_url('/blog/'.$date['year'].'/'.$date['month'].'/'),
 					'archive:title' => $date['dateStr'],
 					'archive:count' => $date['numPosts']
 				);
@@ -79,9 +79,9 @@ class Blog extends MX_Controller {
 			foreach($latest as $post)
 			{
 				$this->partials['blog:latest'][] = array(
-					'latest:link' => site_url('blog/'.dateFmt($post['dateCreated'], 'Y/m').'/'.$post['uri']),
+					'latest:link'  => site_url('blog/'.dateFmt($post['dateCreated'], 'Y/m').'/'.$post['uri']),
 					'latest:title' => $post['postTitle'],
-					'latest:date' => dateFmt($post['dateCreated'], ($this->site->config['dateOrder'] == 'MD') ? 'M jS Y' : 'jS M Y'),
+					'latest:date'  => dateFmt($post['dateCreated'], ($this->site->config['dateOrder'] == 'MD') ? 'M jS Y' : 'jS M Y'),
 				);
 			}
 		}
@@ -92,8 +92,8 @@ class Blog extends MX_Controller {
 			foreach($popularTags as $tag)
 			{
 				$this->partials['blog:tags'][] = array(
-					'tag' => $tag['tag'],
-					'tag:link' => site_url('/blog/tag/'.$tag['safe_tag']),
+					'tag'       => $tag['tag'],
+					'tag:link'  => site_url('/blog/tag/'.$tag['safe_tag']),
 					'tag:count' => $tag['count']
 				);
 			}
@@ -125,7 +125,7 @@ class Blog extends MX_Controller {
 	}
 
 	function more()
-	{	
+	{
 		// get partials
 		$output = $this->partials;
 	
@@ -247,25 +247,25 @@ class Blog extends MX_Controller {
 			$author = $this->blog->lookup_user($post['userID']);
 
 			// populate template
-			$output['post:title'] = $post['postTitle'];
-			$output['post:link'] = site_url('blog/'.dateFmt($post['dateCreated'], 'Y/m').'/'.$post['uri']);
-			$output['post:date'] = dateFmt($post['dateCreated'], ($this->site->config['dateOrder'] == 'MD') ? 'M jS Y' : 'jS M Y');
-			$output['post:day'] = dateFmt($post['dateCreated'], 'd');
-			$output['post:month'] = dateFmt($post['dateCreated'], 'M');
-			$output['post:year'] = dateFmt($post['dateCreated'], 'y');
-			$output['post:body'] = $this->template->parse_body($post['body']);
-			$output['post:excerpt'] = $this->template->parse_body($post['excerpt']);
-			$output['post:comments-count'] = $post['numComments'];
-			$output['post:author'] = (($author['displayName']) ? $author['displayName'] : $author['firstName'].' '.$author['lastName']);
-			$output['post:author-id'] = $author['userID'];
-			$output['post:author-email'] = $author['email'];
+			$output['post:title']           = $post['postTitle'];
+			$output['post:link']            = site_url('blog/'.dateFmt($post['dateCreated'], 'Y/m').'/'.$post['uri']);
+			$output['post:date']            = dateFmt($post['dateCreated'], ($this->site->config['dateOrder'] == 'MD') ? 'M jS Y' : 'jS M Y');
+			$output['post:day']             = dateFmt($post['dateCreated'], 'd');
+			$output['post:month']           = dateFmt($post['dateCreated'], 'M');
+			$output['post:year']            = dateFmt($post['dateCreated'], 'y');
+			$output['post:body']            = $this->template->parse_body($post['body']);
+			$output['post:excerpt']         = $this->template->parse_body($post['excerpt']);
+			$output['post:comments-count']  = $post['numComments'];
+			$output['post:author']          = (($author['displayName']) ? $author['displayName'] : $author['firstName'].' '.$author['lastName']);
+			$output['post:author-id']       = $author['userID'];
+			$output['post:author-email']    = $author['email'];
 			$output['post:author-gravatar'] = 'http://www.gravatar.com/avatar.php?gravatar_id='.md5(trim($author['email'])).'&default='.urlencode(site_url('/static/uploads/avatars/noavatar.gif'));
-			$output['post:author-bio'] = $author['bio'];
-			$output['post:allow-comments'] = ($post['allowComments']) ? TRUE : FALSE;
-			$output['form:name'] = set_value('fullName', $this->session->userdata('firstName').' '.$this->session->userdata('lastName'));
-			$output['form:email'] = set_value('email', $this->session->userdata('email'));
-			$output['form:website'] = $this->input->post('website');
-			$output['form:comment'] = $this->input->post('comment');
+			$output['post:author-bio']      = $author['bio'];
+			$output['post:allow-comments']  = ($post['allowComments']) ? TRUE : FALSE;
+			$output['form:name']            = set_value('fullName', $this->session->userdata('firstName').' '.$this->session->userdata('lastName'));
+			$output['form:email']           = set_value('email', $this->session->userdata('email'));
+			$output['form:website']         = $this->input->post('website');
+			$output['form:comment']         = $this->input->post('comment');
 
 			// get cats
 			if ($cats = $this->blog->get_cats_for_post($post['postID']))
@@ -301,12 +301,12 @@ class Blog extends MX_Controller {
 				$i = 0;
 				foreach ($comments as $comment)
 				{
-					$output['post:comments'][$i]['comment:class'] = ($i % 2) ? ' alt ' : '';
-					$output['post:comments'][$i]['comment:id'] = $comment['commentID'];
+					$output['post:comments'][$i]['comment:class']    = ($i % 2) ? ' alt ' : '';
+					$output['post:comments'][$i]['comment:id']       = $comment['commentID'];
 					$output['post:comments'][$i]['comment:gravatar'] = 'http://www.gravatar.com/avatar.php?gravatar_id='.md5(trim($comment['email'])).'&default='.urlencode(site_url('/static/uploads/avatars/noavatar.gif'));
-					$output['post:comments'][$i]['comment:author'] = (!empty($comment['website'])) ? anchor(prep_url($comment['website']), $comment['fullName']) : $comment['fullName'];
-					$output['post:comments'][$i]['comment:date'] = dateFmt($comment['dateCreated'], ($this->site->config['dateOrder'] == 'MD') ? 'M jS Y' : 'jS M Y');
-					$output['post:comments'][$i]['comment:body'] = nl2br(auto_link(strip_tags($comment['comment'])));
+					$output['post:comments'][$i]['comment:author']   = (!empty($comment['website'])) ? anchor(prep_url($comment['website']), $comment['fullName']) : $comment['fullName'];
+					$output['post:comments'][$i]['comment:date']     = dateFmt($comment['dateCreated'], ($this->site->config['dateOrder'] == 'MD') ? 'M jS Y' : 'jS M Y');
+					$output['post:comments'][$i]['comment:body']     = nl2br(auto_link(strip_tags($comment['comment'])));
 					
 					$i++;
 				}
@@ -456,12 +456,12 @@ class Blog extends MX_Controller {
 		// get result from tags
 		$objectIDs = $this->tags->search('blog_posts', $query);
 
-		$posts = $this->blog->search_posts($query, $objectIDs);
+		$posts                = $this->blog->search_posts($query, $objectIDs);
 		$output['blog:posts'] = $this->_populate_posts($posts);
-		$output['query'] = $query;
+		$output['query']      = $query;
 
 		// set title
-		$output['page:title'] = 'Search the Blog'.(($this->site->config['siteName']) ? ' - '.$this->site->config['siteName'] : '');
+		$output['page:title']   = 'Search the Blog'.(($this->site->config['siteName']) ? ' - '.$this->site->config['siteName'] : '');
 		$output['page:heading'] = 'Search for "'.$output['query'].'"';	
 
 		// set pagination and breadcrumb
@@ -477,7 +477,7 @@ class Blog extends MX_Controller {
 		// rss feed
 		$this->load->helper('xml');
 		
-		$data['encoding'] = 'utf-8';
+		$data['encoding']      = 'utf-8';
 		$data['page_language'] = 'en';
 		$data['creator_email'] = $this->site->config['siteEmail'];
 		
@@ -486,21 +486,21 @@ class Blog extends MX_Controller {
 		{
 			$category = ucwords(str_replace('-', ' ', $cat));
 			
-			$data['feed_name'] = $this->site->config['siteName'].' - '.$category;
-			$data['feed_url'] = site_url('/blog/'.$cat);
+			$data['feed_name']        = $this->site->config['siteName'].' - '.$category;
+			$data['feed_url']         = site_url('/blog/'.$cat);
 			$data['page_description'] = 'Blog Category RSS Feed for '.$this->site->config['siteName'].' - '.$category.'.';			
 			
-			$data['posts'] = $this->blog->get_posts_by_category($cat);
+			$data['posts']            = $this->blog->get_posts_by_category($cat);
 		}
 		
 		// get latest posts
 		else
 		{
-			$data['feed_name'] = $this->site->config['siteName'];
-			$data['feed_url'] = site_url('/blog');
+			$data['feed_name']        = $this->site->config['siteName'];
+			$data['feed_url']         = site_url('/blog');
 			$data['page_description'] = 'Blog RSS Feed for '.$this->site->config['siteName'].'.';
 			
-			$data['posts'] = $this->blog->get_posts(10);
+			$data['posts']            = $this->blog->get_posts(10);
 		}
 		
 		$this->output->set_header('Content-Type: application/rss+xml');
@@ -566,20 +566,20 @@ class Blog extends MX_Controller {
 				
 				// populate template array
 				$data[$x] = array(
-					'post:link' => site_url('blog/'.dateFmt($post['dateCreated'], 'Y/m').'/'.$post['uri']),
-					'post:title' => $post['postTitle'],
-					'post:date' => dateFmt($post['dateCreated'], ($this->site->config['dateOrder'] == 'MD') ? 'M jS Y' : 'jS M Y'),
-					'post:day' => dateFmt($post['dateCreated'], 'd'),
-					'post:month' => dateFmt($post['dateCreated'], 'M'),
-					'post:year' => dateFmt($post['dateCreated'], 'y'),										
-					'post:body' => $this->template->parse_body($post['body'], TRUE, site_url('blog/'.dateFmt($post['dateCreated'], 'Y/m').'/'.$post['uri'])),
-					'post:excerpt' => $this->template->parse_body($post['excerpt'], TRUE, site_url('blog/'.dateFmt($post['dateCreated'], 'Y/m').'/'.$post['uri'])),
-					'post:author' => (($author['displayName']) ? $author['displayName'] : $author['firstName'].' '.$author['lastName']),
-					'post:author-id' => $author['userID'],
-					'post:author-email' => $author['email'],
+					'post:link'            => site_url('blog/'.dateFmt($post['dateCreated'], 'Y/m').'/'.$post['uri']),
+					'post:title'           => $post['postTitle'],
+					'post:date'            => dateFmt($post['dateCreated'], ($this->site->config['dateOrder'] == 'MD') ? 'M jS Y' : 'jS M Y'),
+					'post:day'             => dateFmt($post['dateCreated'], 'd'),
+					'post:month'           => dateFmt($post['dateCreated'], 'M'),
+					'post:year'            => dateFmt($post['dateCreated'], 'y'),										
+					'post:body'            => $this->template->parse_body($post['body'], TRUE, site_url('blog/'.dateFmt($post['dateCreated'], 'Y/m').'/'.$post['uri'])),
+					'post:excerpt'         => $this->template->parse_body($post['excerpt'], TRUE, site_url('blog/'.dateFmt($post['dateCreated'], 'Y/m').'/'.$post['uri'])),
+					'post:author'          => (($author['displayName']) ? $author['displayName'] : $author['firstName'].' '.$author['lastName']),
+					'post:author-id'       => $author['userID'],
+					'post:author-email'    => $author['email'],
 					'post:author-gravatar' => 'http://www.gravatar.com/avatar.php?gravatar_id='.md5(trim($author['email'])).'&default='.urlencode(site_url('/static/uploads/avatars/noavatar.gif')),
-					'post:author-bio' => $author['bio'],
-					'post:comments-count' => $post['numComments']
+					'post:author-bio'      => $author['bio'],
+					'post:comments-count'  => $post['numComments']
 				);
 	
 				// get cats

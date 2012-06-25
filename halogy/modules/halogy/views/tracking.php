@@ -9,7 +9,7 @@ $(function(){
 });
 </script>
 
-<h1>Most Recent Visits <small>(<a href="<?php echo site_url('/admin'); ?>">Back to Dashboard</a>)</small></h1>
+<h1>Visitas recentes <small>(<a href="<?php echo site_url('/admin'); ?>">Voltar para o Painel</a>)</small></h1>
 
 <br />
 

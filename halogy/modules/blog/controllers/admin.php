@@ -20,8 +20,8 @@ class Admin extends MX_Controller {
 
 	// set defaults
 	var $includes_path = '/includes/admin';				// path to includes for header and footer
-	var $redirect = '/admin/blog/viewall';				// default redirect
-	var $permissions = array();
+	var $redirect      = '/admin/blog/viewall';			// default redirect
+	var $permissions   = array();
 
 	function __construct()
 	{
@@ -52,8 +52,6 @@ class Admin extends MX_Controller {
 		//  load models and libs
 		$this->load->model('blog_model', 'blog');
 		$this->load->library('tags');
-
-		$this->load->lang('blogadm'); // Aplicando tradução para o Pt-BR
 
 	}
 	
@@ -103,7 +101,7 @@ class Admin extends MX_Controller {
 			// required
 			$this->core->required = array(
 				'postTitle' => array('label' => 'Title', 'rules' => 'required|trim'),
-				'body' => 'Body'
+				'body'      => 'Body'
 			);
 			
 			// tidy tags
@@ -170,7 +168,7 @@ class Admin extends MX_Controller {
 			// required
 			$this->core->required = array(
 				'postTitle' => array('label' => 'Title', 'rules' => 'required|trim'),
-				'body' => 'Body'
+				'body'      => 'Body'
 			);
 	
 			// set date
@@ -349,7 +347,7 @@ class Admin extends MX_Controller {
 				if ($ID != '' && sizeof($value) > 0 && $value['catName'])
 				{	
 					// set object ID
-					$objectID = array('catID' => $ID);
+					$objectID                   = array('catID' => $ID);
 					$this->core->set['catName'] = $value['catName'];
 					$this->core->set['catSafe'] = url_title(strtolower(trim($value['catName'])));
 					$this->core->update('blog_cats', $objectID);

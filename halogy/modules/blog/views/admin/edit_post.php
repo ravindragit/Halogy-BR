@@ -39,11 +39,11 @@ $(function(){
 
 <form method="post" action="<?php echo site_url($this->uri->uri_string()); ?>" class="default">
 
-<h1 class="headingleft">Edit Blog Post <small>(<a href="<?php echo site_url('/admin/blog'); ?>">Back to Blog Posts</a>)</small></h1>
+<h1 class="headingleft">Editar notícia <small>(<a href="<?php echo site_url('/admin/blog'); ?>">Voltar para Chamadas</a>)</small></h1>
 
 <div class="headingright">
-	<input type="submit" name="view" value="View Post" class="button blue" />
-	<input type="submit" value="Save Changes" class="button" />
+	<input type="submit" name="view" value="Visualizar notícia" class="button blue" />
+	<input type="submit" value="Salvar alterações" class="button" />
 </div>
 
 <div class="clear"></div>
@@ -59,13 +59,13 @@ $(function(){
 	</div>
 <?php endif; ?>
 
-<h2 class="underline">Content and Classification</h2>
+<h2 class="underline">Conteúdo e Classificação</h2>
 
-<label for="postName">Title:</label>
+<label for="postName">Titulo:</label>
 <?php echo @form_input('postTitle', set_value('postTitle', $data['postTitle']), 'id="postTitle" class="formelement"'); ?>
 <br class="clear" />
 
-<label>Categories: <small>[<a href="<?php echo site_url('/admin/blog/categories'); ?>" onclick="return confirm('You will lose any unsaved changes.\n\nContinue anyway?')">update</a>]</small></label>
+<label>Categorias: <small>[<a href="<?php echo site_url('/admin/blog/categories'); ?>" onclick="return confirm('Você perderá suas alterações.\n\nContinua?')">Atualizar</a>]</small></label>
 <div class="categories">
 	<?php if ($categories): ?>
 	<?php foreach($categories as $category): ?>
@@ -75,22 +75,22 @@ $(function(){
 	<?php endforeach; ?>
 	<?php else: ?>
 		<div class="category">
-			<strong>Warning:</strong> It is strongly recommended that you use categories or this may not appear properly. <a href="<?php echo site_url('/admin/blog/categories'); ?>" onclick="return confirm('You will lose any unsaved changes.\n\nContinue anyway?')"><strong>Please update your categories here</strong></a>.
+			<strong>AVISO:</strong> É estremamente recomendado que você use categorias, pois pode não aparecer no site.<a href="<?php echo site_url('/admin/blog/categories'); ?>" onclick="return confirm('Você não salvou as alterações.\n\nContinuar?')"><strong>Por favor atualiza sua categoria.</strong></a>.
 		</div>
 	<?php endif; ?>
 </div>
 <br class="clear" />
 
 <div class="buttons">
-	<a href="#" class="boldbutton"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_bold.png" alt="Bold" title="Bold" /></a>
-	<a href="#" class="italicbutton"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_italic.png" alt="Italic" title="Italic" /></a>
-	<a href="#" class="h1button"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_h1.png" alt="Heading 1" title="Heading 1"/></a>
-	<a href="#" class="h2button"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_h2.png" alt="Heading 2" title="Heading 2" /></a>
-	<a href="#" class="h3button"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_h3.png" alt="Heading 3" title="Heading 3" /></a>	
-	<a href="#" class="urlbutton"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_url.png" alt="Insert Link" title="Insert Link" /></a>
-	<a href="<?php echo site_url('/admin/images/browser'); ?>" class="halogycms_imagebutton"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_image.png" alt="Insert Image" title="Insert Image" /></a>
-	<a href="<?php echo site_url('/admin/files/browser'); ?>" class="halogycms_filebutton"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_file.png" alt="Insert File" title="Insert File" /></a>
-	<a href="#" class="previewbutton"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_save.png" alt="Preview" title="Preview" /></a>	
+	<a href="#" class="boldbutton"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_bold.png" alt="Bold" title="Negrito" /></a>
+	<a href="#" class="italicbutton"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_italic.png" alt="Italic" title="Italico" /></a>
+	<a href="#" class="h1button"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_h1.png" alt="Heading 1" title="Cabeçário 1"/></a>
+	<a href="#" class="h2button"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_h2.png" alt="Heading 2" title="Cabeçário 2" /></a>
+	<a href="#" class="h3button"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_h3.png" alt="Heading 3" title="Cabeçário 3" /></a>	
+	<a href="#" class="urlbutton"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_url.png" alt="Insert Link" title="Inserir Link" /></a>
+	<a href="<?php echo site_url('/admin/images/browser'); ?>" class="halogycms_imagebutton"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_image.png" alt="Insert Image" title="Inserir Imagem" /></a>
+	<a href="<?php echo site_url('/admin/files/browser'); ?>" class="halogycms_filebutton"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_file.png" alt="Insert File" title="Inserir arquivo" /></a>
+	<a href="#" class="previewbutton"><img src="<?php echo $this->config->item('staticPath'); ?>/images/btn_save.png" alt="Preview" title="Visualizar" /></a>	
 </div>
 
 <div class="autosave">
@@ -100,43 +100,43 @@ $(function(){
 </div>
 <br class="clear" /><br />
 
-<label for="excerpt">Excerpt:</label>
+<label for="excerpt">Resumo:</label>
 <?php echo @form_textarea('excerpt', set_value('excerpt', $data['excerpt']), 'id="excerpt" class="formelement code short"'); ?>
 <br class="clear" /><br />
 
-<h2 class="underline">Publishing and Options</h2>
+<h2 class="underline">Publicação e Opções</h2>
 
-<label for="tags">Tags: <br /></label>
+<label for="tags">Palavras-chaves: <br /></label>
 <?php echo @form_input('tags', set_value('tags', $data['tags']), 'id="tags" class="formelement"'); ?>
-<span class="tip">Separate tags with a comma (e.g. &ldquo;places, hobbies, favourite work&rdquo;)</span>
+<span class="tip">Separe as palavras-chaves com vírgula (e.g. &ldquo;lugares, hobbies, trabalho&rdquo;)</span>
 <br class="clear" />
 
-<label for="published">Publish:</label>
+<label for="published">Publicação:</label>
 <?php 
 	$values = array(
-		1 => 'Yes',
-		0 => 'No (save as draft)',
+		1 => 'Sim',
+		0 => 'Não (Salvar como rascunho)',
 	);
 	echo @form_dropdown('published',$values,set_value('published', $data['published']), 'id="published"'); 
 ?>
 <br class="clear" />	
 
-<label for="allowComments">Allow Comments?</label>
+<label for="allowComments">Permitir comentários?</label>
 <?php 
 	$values = array(
-		1 => 'Yes',
-		0 => 'No',
+		1 => 'Sim',
+		0 => 'Não',
 	);
 	echo @form_dropdown('allowComments',$values,set_value('allowComments', $data['allowComments']), 'id="allowComments"'); 
 ?>
 <br class="clear" />
 
-<label for="publishDate">Publish Date:</label>
+<label for="publishDate">Data de publicação:</label>
 <?php echo @form_input('publishDate', date('d M Y', strtotime($data['dateCreated'])), 'id="publishDate" class="formelement datebox" readonly="readonly"'); ?>
 <br class="clear" />
 
 <br />
 	
-<p class="clear" style="text-align: right;"><a href="#" class="button grey" id="totop">Back to top</a></p>
+<p class="clear" style="text-align: right;"><a href="#" class="button grey" id="totop">Voltar para o topo</a></p>
 	
 </form>
