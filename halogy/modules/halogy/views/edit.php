@@ -63,10 +63,10 @@ $(function(){
 
 <form method="post" action="<?php echo site_url($this->uri->uri_string()); ?>" class="default">
 
-<h1 class="headingleft">Edit Site: <?php echo $data['siteDomain']; ?> <small>(<a href="<?php echo site_url('/halogy/sites'); ?>">Back to Sites</a>)</small></h1></h1>
+<h1 class="headingleft">Editar Site: <?php echo $data['siteDomain']; ?> <small>(<a href="<?php echo site_url('/halogy/sites'); ?>">Volte para Sites</a>)</small></h1></h1>
 
 <div class="headingright">
-	<input type="submit" value="Edit Site" class="button" />
+	<input type="submit" value="Editar Site" class="button" />
 </div>
 
 <?php if ($errors = validation_errors()): ?>
@@ -78,61 +78,61 @@ $(function(){
 <div class="clear"></div>
 
 <ul class="innernav clear">
-	<li class="selected"><a href="#tab1" class="showtab">Details</a></li>
-	<li><a href="#tab2" class="showtab">Permissions</a></li>
+	<li class="selected"><a href="#tab1" class="showtab">Detalhes</a></li>
+	<li><a href="#tab2" class="showtab">Permissões</a></li>
 </ul>
 
 <br class="clear" />
 
 <div id="tab1" class="tab">
 
-	<h2>Domains</h2>
+	<h2>Domínios</h2>
 
-	<label for="siteDomain">Domain:</label>
+	<label for="siteDomain">Domínio:</label>
 	<?php echo @form_input('siteDomain', set_value('siteDomain', $data['siteDomain']), 'id="siteDomain" class="formelement"'); ?>
-	<span class="tip">For example 'mysite.com' (no sub-domains, www or trailing slashes)</span><br class="clear" />
+	<span class="tip">Por exemplo 'meusite.com.br' (sem sub-domínios, www ou trailing slashes)</span><br class="clear" />
 	
-	<label for="altDomain">Staging Domain:</label>
+	<label for="altDomain">Domínios estacionados:</label>
 	<?php echo @form_input('altDomain', set_value('altDomain', $data['altDomain']), 'id="altDomain" class="formelement"'); ?>
-	<span class="tip">Optional alternative domain for staging sites.</span><br class="clear" /><br />
+	<span class="tip">Alternativa opcional a domínios estacionados.</span><br class="clear" /><br />
 
-	<h2>Site Details</h2>
+	<h2>Detalhes do Site</h2>
 
-	<label for="siteName">Name of Site:</label>
+	<label for="siteName">Nome do Site:</label>
 	<?php echo @form_input('siteName', set_value('siteName', $data['siteName']), 'id="siteName" class="formelement"'); ?>
-	<span class="tip">The name of the site</span><br class="clear" />
+	<span class="tip">O nome do site</span><br class="clear" />
 
-	<label for="siteURL">URL:</label>
+	<label for="siteURL">Domínio (URL):</label>
 	<?php echo @form_input('siteURL', set_value('siteURL', $data['siteURL']), 'id="siteURL" class="formelement"'); ?>
-	<span class="tip">The full URL to the site</span><br class="clear" />
+	<span class="tip">Endereço completo do site</span><br class="clear" />
 
-	<label for="siteEmail">Email:</label>
+	<label for="siteEmail">E-mail:</label>
 	<?php echo @form_input('siteEmail', set_value('siteEmail', $data['siteEmail']), 'id="siteEmail" class="formelement"'); ?>
-	<span class="tip">The site contact email</span><br class="clear" />
+	<span class="tip">E-mail de contato</span><br class="clear" />
 
-	<label for="siteTel">Telephone:</label>
+	<label for="siteTel">Telefone:</label>
 	<?php echo @form_input('siteTel', set_value('siteTel', $data['siteTel']), 'id="siteTel" class="formelement"'); ?>
-	<span class="tip">The site contact telephone number</span><br class="clear" />
+	<span class="tip">Número de telefone de contato</span><br class="clear" />
 	<br class="clear" />
 
 	<label for="active">Status:</label>
 	<?php
 		$actives = array(
-			1 => 'Active',
-			0 => 'Suspended',			
+			1 => 'Ativado',
+			0 => 'Suspenso',
 		);	
 		echo @form_dropdown('active', $actives, $data['active'], 'id="active" class="formelement"');
 	?>
-	<span class="tip">You cannot delete sites, but you can suspend them and take them offline here.</span>
+	<span class="tip">Você não pode apagar os sites, mas pode suspeder deixando ele offline por aqui.</span>
 	<br class="clear" />
 
 </div>
 
 <div id="tab2" class="tab">
 
-	<h2>Permissions</h2>
+	<h2>Permissões</h2>
 
-	<p><a href="#" class="selectall button small nolabel grey">Select All</a> <a href="#" class="deselectall button small nolabel grey">De-Select All</a></p>
+	<p><a href="#" class="selectall button small nolabel grey">Marcar todos</a> <a href="#" class="deselectall button small nolabel grey">Desmarcar todos</a></p>
 
 	<?php if ($permissions): ?>
 	<?php foreach ($permissions as $cat => $perms): ?>
@@ -140,7 +140,7 @@ $(function(){
 		<div class="perm-heading">
 			<label for="<?php echo strtolower($cat); ?>_all" class="radio"><?php echo $cat; ?></label>
 			<input type="checkbox" class="selectall checkbox" id="<?php echo strtolower($cat); ?>_all" />
-			<input type="button" value="See more" class="seemore small-button" />
+			<input type="button" value="Veja mais" class="seemore small-button" />
 		</div>
 
 		<div class="permissions">
@@ -160,6 +160,6 @@ $(function(){
 	
 </div>
 
-<p class="clear" style="text-align: right;"><a href="#" class="button grey" id="totop">Back to top</a></p>
+<p class="clear" style="text-align: right;"><a href="#" class="button grey" id="totop">Voltar para o topo</a></p>
 	
 </form>

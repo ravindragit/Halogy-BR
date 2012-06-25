@@ -1,8 +1,8 @@
-<h1 class="headingleft">Blog Posts</h1>
+<h1 class="headingleft">Notícias</h1>
 
 <div class="headingright">
 	<?php if (in_array('blog_edit', $this->permission->permissions)): ?>
-		<a href="<?php echo site_url('/admin/blog/add_post'); ?>" class="button">Add Post</a>
+		<a href="<?php echo site_url('/admin/blog/add_post'); ?>" class="button">Adicionar notícias</a>
 	<?php endif; ?>
 </div>
 
@@ -24,18 +24,18 @@
 		<td><?php echo dateFmt($post['dateCreated'], '', '', TRUE); ?></td>
 		<td>
 			<?php
-				if ($post['published']) echo '<span style="color:green;">Yes</span>';
-				else echo 'No';
+				if ($post['published']) echo '<span style="color:green;">Sim</span>';
+				else echo 'Não';
 			?>
 		</td>
 		<td class="tiny">
 			<?php if (in_array('blog_edit', $this->permission->permissions)): ?>
-				<?php echo anchor('/admin/blog/edit_post/'.$post['postID'], 'Edit'); ?>
+				<?php echo anchor('/admin/blog/edit_post/'.$post['postID'], 'Editar'); ?>
 			<?php endif; ?>
 		</td>
 		<td class="tiny">			
 			<?php if (in_array('blog_delete', $this->permission->permissions)): ?>
-				<?php echo anchor('/admin/blog/delete_post/'.$post['postID'], 'Delete', 'onclick="return confirm(\'Are you sure you want to delete this?\')"'); ?>
+				<?php echo anchor('/admin/blog/delete_post/'.$post['postID'], 'Apagar', 'onclick="return confirm(\'Quer realmente apagar?\')"'); ?>
 			<?php endif; ?>
 		</td>
 	</tr>
@@ -44,10 +44,10 @@
 
 <?php echo $this->pagination->create_links(); ?>
 
-<p style="text-align: right;"><a href="#" class="button grey" id="totop">Back to top</a></p>
+<p style="text-align: right;"><a href="#" class="button grey" id="totop">Voltar para o topo</a></p>
 
 <?php else: ?>
 
-<p class="clear">There are no blog posts yet.</p>
+<p class="clear">Não existem notícias cadastradas.</p>
 
 <?php endif; ?>

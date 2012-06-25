@@ -103,14 +103,14 @@ class Halogy extends MX_Controller {
 
 		// required
 		$this->core->required = array(
-			'siteName' => array('label' => 'Name of Site', 'rules' => 'required|trim'),
+			'siteName'   => array('label' => 'Name of Site', 'rules' => 'required|trim'),
 			'siteDomain' => array('label' => 'Domain', 'rules' => 'required|really_unique[sites.siteDomain]|callback__check_domain|strtolower|trim'),
-			'siteEmail' => array('label' => 'Site Email', 'rules' => 'required|valid_email|trim'),
-			'username' => array('label' => 'Username', 'rules' => 'required|really_unique[users.username]|trim'),
-			'password' => array('label' => 'Password', 'rules' => 'required'),
+			'siteEmail'  => array('label' => 'Site Email', 'rules' => 'required|valid_email|trim'),
+			'username'   => array('label' => 'Username', 'rules' => 'required|really_unique[users.username]|trim'),
+			'password'   => array('label' => 'Password', 'rules' => 'required'),
 			'adminEmail' => array('label' => 'Admin Email', 'rules' => 'required|valid_email|trim'),
-			'firstName' => array('label' => 'First Name', 'rules' => 'required|trim'),
-			'lastName' => array('label' => 'Last Name', 'rules' => 'required|trim'),							
+			'firstName'  => array('label' => 'First Name', 'rules' => 'required|trim'),
+			'lastName'   => array('label' => 'Last Name', 'rules' => 'required|trim'),							
 		);
 				
 		// get values
@@ -138,7 +138,7 @@ class Halogy extends MX_Controller {
 				$siteID = $this->db->insert_id();
 									
 				// add group
-				$groupID = $this->permission->add_group('Administrator', $siteID);
+				$groupID = $this->permission->add_group('Administrador', $siteID);
 	
 				// add permissions
 				$this->permission->add_permissions($groupID, $siteID);
@@ -210,7 +210,7 @@ class Halogy extends MX_Controller {
 				// add group if not there
 				if (!$output['data']['groupID'])
 				{
-					$groupID = $this->permission->add_group('Administrator', $siteID);
+					$groupID = $this->permission->add_group('Administrador', $siteID);
 					$output['data']['groupID'] = $groupID;
 
 					// update group ID

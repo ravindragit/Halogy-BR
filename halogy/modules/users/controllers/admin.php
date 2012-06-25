@@ -130,10 +130,10 @@ class Admin extends MX_Controller {
 				
 		// required
 		$this->core->required = array(
-			'username' => array('label' => 'Username', 'rules' => 'really_unique[users.username]|trim'),
-			'email' => array('label' => 'Email', 'rules' => 'valid_email|unique[users.email]|trim'),
+			'username'  => array('label' => 'Username', 'rules' => 'really_unique[users.username]|trim'),
+			'email'     => array('label' => 'Email', 'rules' => 'valid_email|unique[users.email]|trim'),
 			'firstName' => array('label' => 'First name', 'rules' => 'trim|ucfirst'),
-			'lastName' => array('label' => 'Last name', 'rules' => 'trim|ucfirst')
+			'lastName'  => array('label' => 'Last name', 'rules' => 'trim|ucfirst')
 		);
 
 		// get values
@@ -191,13 +191,13 @@ class Admin extends MX_Controller {
 		// check this is a valid user
 		if (!$user = $this->users->get_user($userID))
 		{
-			show_error('Not a valid user.');
+			show_error('Não é um usuário válido.');
 		}
 
 		// check they are not trying to edit a superuser
 		if ($user['groupID'] < 0 && $this->session->userdata('groupID') >= 0)
 		{
-			show_error('You do have permission to edit this user.');
+			show_error('Você não tem permissão para editar esse usuário.');
 		}
 		
 		// set object ID
@@ -205,10 +205,10 @@ class Admin extends MX_Controller {
 
 		// required
 		$this->core->required = array(
-			'username' => array('label' => 'Username', 'rules' => 'really_unique[users.username]|trim'),
-			'email' => array('label' => 'Email', 'rules' => 'valid_email|unique[users.email]|trim'),
+			'username'  => array('label' => 'Username', 'rules' => 'really_unique[users.username]|trim'),
+			'email'     => array('label' => 'Email', 'rules' => 'valid_email|unique[users.email]|trim'),
 			'firstName' => array('label' => 'First name', 'rules' => 'trim|ucfirst'),
-			'lastName' => array('label' => 'Last name', 'rules' => 'trim|ucfirst')
+			'lastName'  => array('label' => 'Last name', 'rules' => 'trim|ucfirst')
 		);
 
 		// get values
@@ -241,7 +241,7 @@ class Admin extends MX_Controller {
 			// update
 			if ($this->core->update($this->table, $objectID))
 			{
-				$output['message'] = '<p>Your details have been updated.</p>';
+				$output['message'] = '<p>Seus detalhes foram atualizados.</p>';
 			}
 		}	
 		
@@ -280,7 +280,7 @@ class Admin extends MX_Controller {
 		{
 			if ($numImported = $this->users->import_csv($_FILES['csv']))
 			{
-				$output['message'] = '<strong>'.$numImported.'</strong> rows have been imported or updated successfully.';
+				$output['message'] = '<strong>'.$numImported.'</strong> linhas foram importadas com sucesso.';
 			}
 		}
 				

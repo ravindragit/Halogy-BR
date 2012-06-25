@@ -42,10 +42,10 @@ $(function(){
 
 <form method="post" action="<?php echo site_url($this->uri->uri_string()); ?>" class="default">
 
-	<h1 class="headingleft">Edit User <small>(<a href="<?php echo site_url('/admin/users'); ?>">Back to Users</a>)</small></h1>
+	<h1 class="headingleft">Editar usuário <small>(<a href="<?php echo site_url('/admin/users'); ?>">Voltar para Usuário</a>)</small></h1>
 
 	<div class="headingright">
-		<input type="submit" value="Save Changes" class="button" />
+		<input type="submit" value="Salvar alterações" class="button" />
 	</div>
 	
 	<div class="clear"></div>
@@ -62,12 +62,12 @@ $(function(){
 	<?php endif; ?>
 
 <ul class="innernav clear">
-	<li class="selected"><a href="#tab1" class="showtab">Details</a></li>
+	<li class="selected"><a href="#tab1" class="showtab">Detalhes</a></li>
 	<?php if (@in_array('shop', $this->permission->sitePermissions) || @in_array('community', $this->permission->sitePermissions)): ?>	
-		<li><a href="#tab2" class="showtab">Address</a></li>
+		<li><a href="#tab2" class="showtab">Endereço</a></li>
 		<?php if (@in_array('community', $this->permission->sitePermissions)): ?>
-			<li><a href="#tab3" class="showtab">Community</a></li>
-			<li><a href="#tab4" class="showtab">Company</a></li>
+			<li><a href="#tab3" class="showtab">Comunidade</a></li>
+			<li><a href="#tab4" class="showtab">Empresa</a></li>
 		<?php endif; ?>
 	<?php endif; ?>
 </ul>
@@ -76,18 +76,18 @@ $(function(){
 
 <div id="tab1" class="tab">
 
-	<h2>User Details</h2>
+	<h2>Detalhes do usuário</h2>
 
 	<label for="username">Username:</label>
 	<?php echo @form_input('username', set_value('username', $data['username']), 'id="username" class="formelement"'); ?>
 	<br class="clear" />
 
-	<label for="password">Password:</label>
+	<label for="password">Senha:</label>
 	<?php echo @form_password('password','', 'id="password" class="formelement"'); ?>
 	<br class="clear" />
 
 <?php if (@in_array('users_groups', $this->permission->permissions)): ?>
-	<label for="permissions">Group:</label>
+	<label for="permissions">Grupo:</label>
 	<?php 
 		$values = array(
 			0 => 'None'
@@ -95,10 +95,10 @@ $(function(){
 
 		if ($this->session->userdata('groupID') == '-1')
 		{
-			$values[-1] = 'Superuser';
+			$values[-1] = 'Super usuário';
 		}
 		
-		$values[$this->site->config['groupID']] = 'Administrator';
+		$values[$this->site->config['groupID']] = 'Administrador';
 		if ($groups)
 		{
 			foreach($groups as $group)
@@ -108,31 +108,31 @@ $(function(){
 		}
 		echo @form_dropdown('groupID',$values,set_value('groupIDs', $data['groupID']), 'id="groupIDs" class="formelement"'); 
 	?>
-	<span class="tip">To edit permissions click on `User Groups` in the Users tab.</span>
+	<span class="tip">Para editar as permissões clique em 'Grupo de usuários' na aba Usuários.</span>
 	<br class="clear" />
 <?php endif; ?>
 
-	<label for="email">Email:</label>
+	<label for="email">E-mail:</label>
 	<?php echo @form_input('email',set_value('email', $data['email']), 'id="email" class="formelement"'); ?>
 	<br class="clear" />	
 
-	<label for="firstName">First Name:</label>
+	<label for="firstName">Primeiro nome:</label>
 	<?php echo @form_input('firstName',set_value('firstName', $data['firstName']), 'id="firstName" class="formelement"'); ?>
 	<br class="clear" />
 
-	<label for="lastName">Last Name:</label>
+	<label for="lastName">Último nome:</label>
 	<?php echo @form_input('lastName',set_value('lastName', $data['lastName']), 'id="lastName" class="formelement"'); ?>
 	<br class="clear" />
 
-	<label for="displayName">Display Name:</label>
+	<label for="displayName">Exibir nome:</label>
 	<?php echo @form_input('displayName', set_value('displayName', $data['displayName']), 'id="displayName" class="formelement" maxlength="15"'); ?>
-	<span class="tip">For use in the forums (optional).</span></span><br class="clear" />
+	<span class="tip">Para usar nos fóruns (opcional).</span></span><br class="clear" />
 
-	<label for="active">Active?</label>
+	<label for="active">Ativar?</label>
 	<?php 
 		$values = array(
-			1 => 'Yes',
-			0 => 'No'			
+			1 => 'Sim',
+			0 => 'Não'
 		);
 		echo @form_dropdown('active',$values,set_value('active', $data['active']), 'id="active" class="formelement"'); 
 	?>
@@ -145,72 +145,72 @@ $(function(){
 <div id="tab2" class="tab">
 
 <?php if (@in_array('shop', $this->permission->sitePermissions) || @in_array('community', $this->permission->sitePermissions)): ?>	
-	<h2>Delivery Address</h2>
+	<h2>Endereço de entrega</h2>
 
-	<label for="address1">Address 1:</label>
+	<label for="address1">Endereço 1:</label>
 	<?php echo @form_input('address1',set_value('address1', $data['address1']), 'id="address1" class="formelement"'); ?>
 	<br class="clear" />
 
-	<label for="address2">Address 2:</label>
+	<label for="address2">Endereço 2:</label>
 	<?php echo @form_input('address2',set_value('address2', $data['address2']), 'id="address2" class="formelement"'); ?>
 	<br class="clear" />
 
-	<label for="address3">Address 3:</label>
+	<label for="address3">Endereço 3:</label>
 	<?php echo @form_input('address3',set_value('address3', $data['address3']), 'id="address3" class="formelement"'); ?>
 	<br class="clear" />
 
-	<label for="city">City:</label>
+	<label for="city">Cidade:</label>
 	<?php echo @form_input('city',set_value('city', $data['city']), 'id="city" class="formelement"'); ?>
 	<br class="clear" />
 
-	<label for="state">State:</label>
+	<label for="state">Estado:</label>
 	<?php echo @display_states('state', $data['state'], 'id="state" class="formelement"'); ?>
 	<br class="clear" />
 
-	<label for="postcode">Post /ZIP Code:</label>
+	<label for="postcode">CEP:</label>
 	<?php echo @form_input('postcode',set_value('postcode', $data['postcode']), 'id="postcode" class="formelement"'); ?>
 	<br class="clear" />
 
-	<label for="country">Country:</label>
+	<label for="country">País:</label>
 	<?php echo @display_countries('country', $data['country'], 'id="country" class="formelement"'); ?>
 	<br class="clear" />
 
-	<label for="phone">Phone:</label>
+	<label for="phone">Telefone:</label>
 	<?php echo @form_input('phone',set_value('phone', $data['phone']), 'id="phone" class="formelement"'); ?>
 	<br class="clear" /><br />
 
-	<h2>Billing Address</h2>
+	<h2>Endereço de cobrança</h2>
 
 	<p><input type="checkbox" name="sameAddress" value="1" class="checkbox" id="sameAddress" />
-	The billing address is the same as my delivery address.</p>
+	Usar o mesmom endereço de entrega.</p>
 
 	<div id="billing">
 
-		<label for="billingAddress1">Address 1:</label>
+		<label for="billingAddress1">Endereço 1:</label>
 		<?php echo @form_input('billingAddress1',set_value('billingAddress1', $data['billingAddress1']), 'id="billingAddress1" class="formelement"'); ?>
 		<br class="clear" />
 	
-		<label for="billingAddress2">Address 2:</label>
+		<label for="billingAddress2">Endereço 2:</label>
 		<?php echo @form_input('billingAddress2',set_value('billingAddress2', $data['billingAddress2']), 'id="billingAddress2" class="formelement"'); ?>
 		<br class="clear" />
 	
-		<label for="billingAddress3">Address 3:</label>
+		<label for="billingAddress3">Endereço 3:</label>
 		<?php echo @form_input('billingAddress3',set_value('billingAddress3', $data['billingAddress3']), 'id="billingAddress3" class="formelement"'); ?>
 		<br class="clear" />
 	
-		<label for="billingCity">City:</label>
+		<label for="billingCity">Cidade:</label>
 		<?php echo @form_input('billingCity',set_value('billingCity', $data['billingCity']), 'id="billingCity" class="formelement"'); ?>
 		<br class="clear" />
 
-		<label for="billingState">State:</label>
+		<label for="billingState">Estado:</label>
 		<?php echo display_states('billingState', $data['billingState'], 'id="billingState" class="formelement"'); ?>
 		<br class="clear" />
 	
-		<label for="billingPostcode">Post /ZIP Code:</label>
+		<label for="billingPostcode">CEP:</label>
 		<?php echo @form_input('billingPostcode',set_value('billingPostcode', $data['billingPostcode']), 'id="billingPostcode" class="formelement"'); ?>
 		<br class="clear" />
 	
-		<label for="billingCountry">Country:</label>
+		<label for="billingCountry">País:</label>
 		<?php echo display_countries('billingCountry', $data['billingCountry'], 'id="billingCountry" class="formelement"'); ?>
 		<br class="clear" />
 
@@ -225,9 +225,9 @@ $(function(){
 
 <?php if (@in_array('community', $this->permission->permissions)): ?>
 
-	<h2>Community</h2>
+	<h2>Comunidade</h2>
 
-	<label for="signature">Signature:</label>
+	<label for="signature">Assinatura:</label>
 	<?php echo @form_textarea('signature',set_value('signature', $data['signature']), 'id="signature" class="formelement small"'); ?>
 	<br class="clear" />
 
@@ -235,21 +235,21 @@ $(function(){
 	<?php echo @form_textarea('bio',set_value('bio', $data['bio']), 'id="bio" class="formelement small"'); ?>
 	<br class="clear" />
 
-	<label for="notifications">Notifications:</label>
+	<label for="notifications">Notificações:</label>
 	<?php
 		$values = array(
-			0 => 'No',
-			1 => 'Yes',
+			0 => 'Não',
+			1 => 'Sim',
 		);
 		echo @form_dropdown('notifications', $values, set_value('notifications', $data['notifications']), 'id="notifications" class="formelement"'); 
 	?>
 	<br class="clear" />
 
-	<label for="privacy">Privacy:</label>
+	<label for="privacy">Privacidade:</label>
 	<?php
 		$values = array(
-			'V' => 'Everyone can see my profile',
-			'H' => 'Hide my profile and feed'
+			'V' => 'Todos podem ver meu perfil',
+			'H' => 'Ocultar meu perfil'
 		);
 		echo @form_dropdown('privacy', $values, set_value('privacy', $data['privacy']), 'id="privacy" class="formelement"'); 
 	?>
@@ -267,17 +267,17 @@ $(function(){
 
 <div id="tab4" class="tab">
 
-	<h2>Company</h2>
+	<h2>Empresa</h2>
 
-	<label for="companyName">Company Name:</label>
+	<label for="companyName">Nome da Empresa:</label>
 	<?php echo @form_input('companyName',set_value('companyName', $data['companyName']), 'id="companyName" class="formelement"'); ?>
 	<br class="clear" />
 
-	<label for="companyDescription">Company Description:</label>
+	<label for="companyDescription">Descrição da Empresa:</label>
 	<?php echo @form_textarea('companyDescription',set_value('companyDescription', $data['companyDescription']), 'id="companyDescription" class="formelement small"'); ?>
 	<br class="clear" />
 
-	<label for="companyWebsite">Company Website:</label>
+	<label for="companyWebsite">Website da Empresa:</label>
 	<?php echo @form_input('companyWebsite',set_value('companyWebsite', $data['companyWebsite']), 'id="companyWebsite" class="formelement"'); ?>
 	<br class="clear" />
 	
@@ -285,6 +285,6 @@ $(function(){
 
 <?php endif; ?>
 
-<p class="clear" style="text-align: right;"><a href="#" class="button grey" id="totop">Back to top</a></p>
+<p class="clear" style="text-align: right;"><a href="#" class="button grey" id="totop">Voltar para o topo</a></p>
 	
 </form>

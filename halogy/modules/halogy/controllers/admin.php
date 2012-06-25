@@ -44,7 +44,7 @@ class Admin extends MX_Controller {
 		// logout if not admin
 		if ($this->session->userdata('session_user') && !$this->permission->permissions)
 		{
-			show_error('Sorry, you do not have permission to administer this website. Please go back or '.anchor('/admin/logout', 'log out').'.');
+			show_error('Desculpe, mas você não tem permissão para administrar este website. '.anchor('/admin/logout', 'Sair').'');
 		}
 		if (!$this->session->userdata('session_admin'))
 		{
@@ -58,7 +58,7 @@ class Admin extends MX_Controller {
 		// show any errors that have resulted from a redirect
 		if ($days === 'permissions')
 		{
-			$this->form_validation->set_error('Sorry, you do not have permissions to do what you just tried to do.');
+			$this->form_validation->set_error('Desculpe, mas você não tem permissão para fazer isso.');
 		}
 
 		// set message
@@ -108,24 +108,24 @@ class Admin extends MX_Controller {
 		}
 
 		// get stats
-		$data['recentActivity'] = $this->halogy->get_recent_activity();		
-		$data['todaysActivity'] = $this->halogy->get_activity('today');
+		$data['recentActivity']     = $this->halogy->get_recent_activity();		
+		$data['todaysActivity']     = $this->halogy->get_activity('today');
 		$data['yesterdaysActivity'] = $this->halogy->get_activity('yesterday');		
-		$output['activity'] = $this->parser->parse('activity_ajax', $data, TRUE);
+		$output['activity']         = $this->parser->parse('activity_ajax', $data, TRUE);
 
 		// get stats
-		$output['days'] = (is_numeric($days)) ? $days : '30';
-		$output['numPageViews'] = $this->halogy->get_num_page_views();
-		$output['numPages'] = $this->halogy->get_num_pages();
-		$output['quota'] = $this->site->get_quota();
-		$output['numUsers'] = ($count = $this->halogy->get_num_users()) ? $count : 0;
-		$output['numUsersToday'] = ($count = $this->halogy->get_num_users_today()) ? $count : 0;
-		$output['numUsersYesterday'] = ($count = $this->halogy->get_num_users_yesterday()) ? $count : 0;
-		$output['numUsersWeek'] = ($count = $this->halogy->get_num_users_week()) ? $count : 0;
-		$output['numUsersLastWeek'] = ($count = $this->halogy->get_num_users_last_week()) ? $count : 0;		
-		$output['numBlogPosts'] = $this->halogy->get_blog_posts_count();
-		$output['popularPages'] = $this->halogy->get_popular_pages();
-		$output['popularBlogPosts'] = $this->halogy->get_popular_blog_posts();
+		$output['days']                = (is_numeric($days)) ? $days : '30';
+		$output['numPageViews']        = $this->halogy->get_num_page_views();
+		$output['numPages']            = $this->halogy->get_num_pages();
+		$output['quota']               = $this->site->get_quota();
+		$output['numUsers']            = ($count = $this->halogy->get_num_users()) ? $count : 0;
+		$output['numUsersToday']       = ($count = $this->halogy->get_num_users_today()) ? $count : 0;
+		$output['numUsersYesterday']   = ($count = $this->halogy->get_num_users_yesterday()) ? $count : 0;
+		$output['numUsersWeek']        = ($count = $this->halogy->get_num_users_week()) ? $count : 0;
+		$output['numUsersLastWeek']    = ($count = $this->halogy->get_num_users_last_week()) ? $count : 0;		
+		$output['numBlogPosts']        = $this->halogy->get_blog_posts_count();
+		$output['popularPages']        = $this->halogy->get_popular_pages();
+		$output['popularBlogPosts']    = $this->halogy->get_popular_blog_posts();
 		$output['popularShopProducts'] = $this->halogy->get_popular_shop_products();
 				
 		$this->load->view($this->includes_path.'/header');
@@ -198,8 +198,8 @@ class Admin extends MX_Controller {
 			$this->load->model('halogy_model', 'halogy');
 	
 			// get stats
-			$output['recentActivity'] = $this->halogy->get_recent_activity();		
-			$output['todaysActivity'] = $this->halogy->get_activity('today');
+			$output['recentActivity']     = $this->halogy->get_recent_activity();		
+			$output['todaysActivity']     = $this->halogy->get_activity('today');
 			$output['yesterdaysActivity'] = $this->halogy->get_activity('yesterday');
 	
 			$this->load->view('activity_ajax', $output);
@@ -325,16 +325,16 @@ class Admin extends MX_Controller {
 		$output['data'] = $this->core->get_values('sites', $objectID);
 
 		// set defaults
-		$output['data']['shopVariation1'] = ($this->input->post('shopVariation1')) ? $this->input->post('shopVariation1') : $this->site->config['shopVariation1'];
-		$output['data']['shopVariation2'] = ($this->input->post('shopVariation2')) ? $this->input->post('shopVariation2') : $this->site->config['shopVariation2'];
-		$output['data']['shopVariation3'] = ($this->input->post('shopVariation3')) ? $this->input->post('shopVariation3') : $this->site->config['shopVariation3'];
-		$output['data']['emailHeader'] = ($this->input->post('emailHeader')) ? $this->input->post('emailHeader') : $this->site->config['emailHeader'];
-		$output['data']['emailFooter'] = ($this->input->post('emailFooter')) ? $this->input->post('emailFooter') : $this->site->config['emailFooter'];
-		$output['data']['emailTicket'] = ($this->input->post('emailTicket')) ? $this->input->post('emailTicket') : $this->site->config['emailTicket'];
-		$output['data']['emailAccount'] = ($this->input->post('emailAccount')) ? $this->input->post('emailAccount') : $this->site->config['emailAccount'];
-		$output['data']['emailOrder'] = ($this->input->post('emailOrder')) ? $this->input->post('emailOrder') : $this->site->config['emailOrder'];
-		$output['data']['emailDispatch'] = ($this->input->post('emailDispatch')) ? $this->input->post('emailDispatch') : $this->site->config['emailDispatch'];
-		$output['data']['emailDonation'] = ($this->input->post('emailDonation')) ? $this->input->post('emailDonation') : $this->site->config['emailDonation'];
+		$output['data']['shopVariation1']    = ($this->input->post('shopVariation1')) ? $this->input->post('shopVariation1') : $this->site->config['shopVariation1'];
+		$output['data']['shopVariation2']    = ($this->input->post('shopVariation2')) ? $this->input->post('shopVariation2') : $this->site->config['shopVariation2'];
+		$output['data']['shopVariation3']    = ($this->input->post('shopVariation3')) ? $this->input->post('shopVariation3') : $this->site->config['shopVariation3'];
+		$output['data']['emailHeader']       = ($this->input->post('emailHeader')) ? $this->input->post('emailHeader') : $this->site->config['emailHeader'];
+		$output['data']['emailFooter']       = ($this->input->post('emailFooter')) ? $this->input->post('emailFooter') : $this->site->config['emailFooter'];
+		$output['data']['emailTicket']       = ($this->input->post('emailTicket')) ? $this->input->post('emailTicket') : $this->site->config['emailTicket'];
+		$output['data']['emailAccount']      = ($this->input->post('emailAccount')) ? $this->input->post('emailAccount') : $this->site->config['emailAccount'];
+		$output['data']['emailOrder']        = ($this->input->post('emailOrder')) ? $this->input->post('emailOrder') : $this->site->config['emailOrder'];
+		$output['data']['emailDispatch']     = ($this->input->post('emailDispatch')) ? $this->input->post('emailDispatch') : $this->site->config['emailDispatch'];
+		$output['data']['emailDonation']     = ($this->input->post('emailDonation')) ? $this->input->post('emailDonation') : $this->site->config['emailDonation'];
 		$output['data']['emailSubscription'] = ($this->input->post('emailSubscription')) ? $this->input->post('emailSubscription') : $this->site->config['emailSubscription'];
 				
 		// handle post
@@ -343,14 +343,14 @@ class Admin extends MX_Controller {
 			// check some things aren't being posted
 			if ($this->input->post('siteID') || $this->input->post('siteDomain') || $this->input->post('groupID'))
 			{
-				show_error('You do not have permission to change those things.');
+				show_error('Você não tem permissão para alterar.');
 			}
 			
 			// required
 			$this->core->required = array(
-				'siteName' => array('label' => 'Name of Site', 'rules' => 'required|trim'),
-				'siteURL' => array('label' => 'URL', 'rules' => 'required|trim'),
-				'siteEmail' => array('label' => 'Email', 'rules' => 'required|valid_email|trim'),
+				'siteName'  => array('label' => 'Nome do Site', 'rules' => 'required|trim'),
+				'siteURL'   => array('label' => 'URL', 'rules' => 'required|trim'),
+				'siteEmail' => array('label' => 'E-mail', 'rules' => 'required|valid_email|trim'),
 			);	
 	
 			// set date
@@ -360,7 +360,7 @@ class Admin extends MX_Controller {
 			if ($this->core->update('sites', $objectID))
 			{
 				// where to redirect to
-				$output['message'] = '<p>Your details have been updated.</p>';
+				$output['message'] = '<p>Seus detalhes foram atualizados.</p>';
 			}
 		}
 

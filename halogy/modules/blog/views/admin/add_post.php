@@ -38,7 +38,7 @@ $(function(){
 
 <form method="post" action="<?php echo site_url($this->uri->uri_string()); ?>" class="default">
 
-<h1 class="headingleft">Add Blog Post <small>(<a href="<?php echo site_url('/admin/blog'); ?>">Back to Blog Posts</a>)</small></h1>
+<h1 class="headingleft"><?php echo $title_add_blog; ?> <small>(<a href="<?php echo site_url('/admin/blog'); ?>">Back to Blog Posts</a>)</small></h1>
 
 <div class="headingright">
 	<input type="submit" value="Save Changes" class="button" />

@@ -52,6 +52,9 @@ class Admin extends MX_Controller {
 		//  load models and libs
 		$this->load->model('blog_model', 'blog');
 		$this->load->library('tags');
+
+		$this->load->lang('blogadm'); // Aplicando tradução para o Pt-BR
+
 	}
 	
 	function index()
@@ -92,6 +95,9 @@ class Admin extends MX_Controller {
 		// get categories
 		$output['categories'] = $this->blog->get_categories();
 
+		// get translation
+		$output['title_add_blog'] = $this->lang->line('title_add_blog');
+
 		if (count($_POST))
 		{		
 			// required
@@ -113,9 +119,9 @@ class Admin extends MX_Controller {
 		
 			// set date
 			$this->core->set['dateCreated'] = date("Y-m-d H:i:s");
-			$this->core->set['userID'] = $this->session->userdata('userID');
-			$this->core->set['uri'] = url_title(strtolower($this->input->post('postTitle')));
-			$this->core->set['tags'] = $tags;
+			$this->core->set['userID']      = $this->session->userdata('userID');
+			$this->core->set['uri']         = url_title(strtolower($this->input->post('postTitle')));
+			$this->core->set['tags']        = $tags;
 			
 			// update
 			if ($this->core->update('blog_posts'))
@@ -187,8 +193,8 @@ class Admin extends MX_Controller {
 
 			// set stuff
 			$this->core->set['dateModified'] = date("Y-m-d H:i:s");
-			$this->core->set['uri'] = url_title(strtolower($this->input->post('postTitle')));
-			$this->core->set['tags'] = $tags;
+			$this->core->set['uri']          = url_title(strtolower($this->input->post('postTitle')));
+			$this->core->set['tags']         = $tags;
 			
 			// update
 			if ($this->core->update('blog_posts', $objectID))

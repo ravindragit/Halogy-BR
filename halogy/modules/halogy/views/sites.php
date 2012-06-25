@@ -23,16 +23,16 @@ $(function(){
 });
 </script>
 
-<h1 class="headingleft">Your Sites</h1>
+<h1 class="headingleft">Seus sites</h1>
 
 <div class="headingright">
 
 	<form method="post" action="<?php echo site_url('/halogy/sites'); ?>" class="default" id="search">
-		<input type="text" name="searchbox" id="searchbox" class="formelement inactive" title="Search Sites..." />
+		<input type="text" name="searchbox" id="searchbox" class="formelement inactive" title="Buscar Sites..." />
 		<input type="image" src="<?php echo $this->config->item('staticPath'); ?>/images/btn_search.gif" id="searchbutton" />
 	</form>
 
-	<a href="<?php echo site_url('/halogy/add_site'); ?>" class="button">Add Site</a>
+	<a href="<?php echo site_url('/halogy/add_site'); ?>" class="button">Novo site</a>
 </div>
 
 <div class="clear"></div>
@@ -43,11 +43,11 @@ $(function(){
 
 <table class="default">
 	<tr>
-		<th><?php echo order_link('halogy/sites/viewall','siteName','Site Name'); ?></th>
-		<th><?php echo order_link('halogy/sites/viewall','dateCreated','Date Created'); ?></th>
-		<th><?php echo order_link('halogy/sites/viewall','siteDomain','Domain'); ?></th>
-		<th><?php echo order_link('halogy/sites/viewall','altDomain','Staging Domain'); ?></th>		
-		<th class="narrow"><?php echo order_link('halogy/sites/viewall','active','Status'); ?></th>		
+		<th><?php echo order_link('halogy/sites/viewall','siteName','Nome do Site'); ?></th>
+		<th><?php echo order_link('halogy/sites/viewall','dateCreated','Data de criação'); ?></th>
+		<th><?php echo order_link('halogy/sites/viewall','siteDomain','Dominios'); ?></th>
+		<th><?php echo order_link('halogy/sites/viewall','altDomain','Domínios estacionados'); ?></th>		
+		<th class="narrow"><?php echo order_link('halogy/sites/viewall','active','Estatus'); ?></th>		
 		<th class="tiny">&nbsp;</th>
 		<th class="tiny">&nbsp;</th>
 	</tr>
@@ -63,15 +63,15 @@ $(function(){
 		<td><?php echo $site['altDomain']; ?></td>		
 		<td>
 			<?php
-				if ($site['active']) echo '<span style="color:green"><strong>Active</strong></span>';
-				if (!$site['active']) echo '<span style="color:red">Suspended</span>';
+				if ($site['active']) echo '<span style="color:green"><strong>Ativado</strong></span>';
+				if (!$site['active']) echo '<span style="color:red">Suspenso</span>';
 			?>
 		</td>	
 		<td class="tiny">
-			<?php echo anchor('/halogy/edit_site/'.$site['siteID'], 'Edit'); ?>
+			<?php echo anchor('/halogy/edit_site/'.$site['siteID'], 'Editar'); ?>
 		</td>
 		<td class="tiny">
-			<?php echo anchor('/halogy/delete_site/'.$site['siteID'], 'Delete', 'onclick="return confirm(\'Are you absolutely SURE you want to delete this site?\n\nThere is no undo!\')"'); ?>
+			<?php echo anchor('/halogy/delete_site/'.$site['siteID'], 'Apagar', 'onclick="return confirm(\'Tem certeza que quer apagar?\n\nApagando este site não terá como restaurar!\')"'); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -79,17 +79,17 @@ $(function(){
 
 <?php echo $this->pagination->create_links(); ?>
 
-<p style="text-align: right;"><a href="#" class="button grey" id="totop">Back to top</a></p>
+<p style="text-align: right;"><a href="#" class="button grey" id="totop">Volta para o topo</a></p>
 
 <?php else: ?>
 
 	<?php if (count($_POST)): ?>
 	
-		<p>No sites found.</p>
+		<p>Nenhum site.</p>
 	
 	<?php else: ?>
 	
-		<p>You haven't created any sites yet. Create one using the &ldquo;Add Site&rdquo; link above.</p>
+		<p>Você não tem nenhum site ainda. Crie um usando o link &ldquo;Novo Site&rdquo; acima.</p>
 	
 	<?php endif; ?>
 

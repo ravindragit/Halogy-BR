@@ -107,7 +107,7 @@ class Users_model extends CI_Model {
 			$allowedExtensions = array("txt", "csv");
 			if (!in_array(end(explode(".", $file['name'])), $allowedExtensions))
 			{
-				$this->form_validation->set_error('The file was not a CSV.');
+				$this->form_validation->set_error('Não é um CSV válido.');
 				
 				return FALSE;
 			}
@@ -148,7 +148,7 @@ class Users_model extends CI_Model {
 							// add new user providing email is valid
 							if (!$this->form_validation->valid_email($data[0]))
 							{
-								$this->form_validation->set_error('<p>There was a badly formatted email address ('.$data[0].'), so the import could not complete. Please check the CSV file and try again.</p>');
+								$this->form_validation->set_error('<p>O formado do e-mail ('.$data[0].') não é válido, assim a importação não foi concluida. Por favor cheque o arquivo CSV e tente novamente.</p>');
 								
 								return false;
 							}
@@ -177,14 +177,14 @@ class Users_model extends CI_Model {
 			}
 			else
 			{
-				$this->form_validation->set_error('There didn\'t seem to be any rows in the CSV file.');
+				$this->form_validation->set_error('Não contem nenhuma linha no arquivo CSV.');
 
 				return FALSE;
 			}
 		}
 		else
 		{
-			$this->form_validation->set_error('There was a problem opening the file.');
+			$this->form_validation->set_error('Não foi possível abrir o arquivo, tente novamente.');
 			
 			return FALSE;
 		}

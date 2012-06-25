@@ -18,12 +18,12 @@
 	
 	<form action="" method="post" class="default">
 					
-		<label for="username">Username:</label>
+		<label for="username">Usuário:</label>
 		<input type="text" id="username" name="username" class="formelement" />
 
 		<br class="clear" />
 	
-		<label for="password">Password:</label>
+		<label for="password">Senha:</label>
 		<input type="password" id="password" name="password" class="formelement" />
 
 		<br class="clear" /><br />
@@ -35,9 +35,9 @@
 	} else {
 ?>
 
-	<h1>Logout</h1>
+	<h1>Sair</h1>
 
-	<p><a href="/login/logout/">Click here to logout.</a></p>
+	<p><a href="/login/logout/">Clique aqui para sair.</a></p>
 	
 <?php
 	}

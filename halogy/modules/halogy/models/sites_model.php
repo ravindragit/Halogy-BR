@@ -113,12 +113,14 @@ class Sites_model extends CI_Model {
 		<div class="menu">
 			<ul>
 				{navigation}
-				'.((in_array('blog', $this->permission->permissions)) ? '<li><a href="'.$this->config->item('index_page').'/blog">Blog</a></li>' : '').'
-				'.((in_array('shop', $this->permission->permissions)) ? '<li><a href="'.$this->config->item('index_page').'/shop">Shop</a></li>' : '').'				<li><a href="'.$this->config->item('index_page').'/admin">Admin</a></li>
+				'.((in_array('blog', $this->permission->permissions)) ? '<li><a href="'.$this->config->item('index_page').'/blog">Notícias</a></li>' : '').'
+				'.((in_array('shop', $this->permission->permissions)) ? '<li><a href="'.$this->config->item('index_page').'/shop">Loja</a></li>' : '').'
+																		 <li><a href="'.$this->config->item('index_page').'/admin">Admin</a></li>
 			</ul>
 		</div>
 		
-		<center><p><small>Powered by <a href="http://www.halogy.com">Halogy</a></small></p>		
+		<center><p><small>Powered by <a href="http://www.halogy.com">Halogy</a></small></p>
+				<p><small>Versão brasileira <a href="http://www.everlon.com">Everlon Passos</a></small></p>
 	
 		
 	</body>
@@ -162,7 +164,7 @@ class Sites_model extends CI_Model {
 		$this->db->set('siteID', $siteID);
 		$this->db->set('dateCreated', date("Y-m-d H:i:s"));
 		$this->db->set('blockRef', 'block1');
-		$this->db->set('body', "# Welcome.\n\nYour site is set up and ready to go!");
+		$this->db->set('body', "# Bem-vindo.\n\nSeu site esta pronto para uso!");
 		$this->db->set('versionID', $versionID);
 		$this->db->insert('page_blocks');
 

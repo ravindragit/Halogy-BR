@@ -33,10 +33,10 @@ $(function(){
 
 <form method="post" action="<?php echo site_url($this->uri->uri_string()); ?>" class="default">
 
-<h1 class="headingleft">Edit Site: <?php echo $data['siteDomain']; ?></h1>
+<h1 class="headingleft">Editar o site: <?php echo $data['siteDomain']; ?></h1>
 
 <div class="headingright">
-	<input type="submit" value="Save Changes" class="button" />
+	<input type="submit" value="Atualizar" class="button" />
 </div>
 
 <div class="clear"></div>
@@ -54,12 +54,12 @@ $(function(){
 
 <ul class="innernav clear">
 	<li class="selected"><a href="#siteconfig" class="showtab">Site</a></li>
-	<li><a href="#emailsconfig" class="showtab">Emails</a></li>
+	<li><a href="#emailsconfig" class="showtab">E-mails</a></li>
 <?php if (@in_array('shop', $this->permission->permissions)): ?>	
-	<li><a href="#shopconfig" class="showtab">Shop</a></li>
+	<li><a href="#shopconfig" class="showtab">Loja</a></li>
 <?php endif; ?>
 <?php if (@in_array('community', $this->permission->permissions)): ?>	
-	<li><a href="#ceconfig" class="showtab">Community</a></li>
+	<li><a href="#ceconfig" class="showtab">Comunidade</a></li>
 <?php endif; ?>
 </ul>
 
@@ -67,38 +67,38 @@ $(function(){
 
 <div id="siteconfig" class="tab">
 
-	<h2>Site Details</h2>
+	<h2>Detalhes do site</h2>
 	
-	<label for="siteName">Name of site:</label>
+	<label for="siteName">Nome do site:</label>
 	<?php echo @form_input('siteName', set_value('siteName', $data['siteName']), 'id="siteName" class="formelement"'); ?>
-	<span class="tip">Set the details of your website, including the name, URL, email and telephone.</span>
+	<span class="tip">Informe os detalhes do seu site, incluindo o nome, endereço, e-mail e telefone.</span>
 	<br class="clear" />
 	
-	<label for="siteURL">URL:</label>
+	<label for="siteURL">Domínio:</label>
 	<?php echo @form_input('siteURL', set_value('siteURL', $data['siteURL']), 'id="siteURL" class="formelement"'); ?>
 	<br class="clear" />
 	
-	<label for="siteEmail">Email:</label>
+	<label for="siteEmail">E-mail:</label>
 	<?php echo @form_input('siteEmail', set_value('siteEmail', $data['siteEmail']), 'id="siteEmail" class="formelement"'); ?>
 	<br class="clear" />
 	
-	<label for="siteTel">Telephone:</label>
+	<label for="siteTel">Telefone:</label>
 	<?php echo @form_input('siteTel', set_value('siteTel', $data['siteTel']), 'id="siteTel" class="formelement"'); ?>
 	<br class="clear" />
 	
-	<label for="siteAddress">Address:</label>
+	<label for="siteAddress">Endereço:</label>
 	<?php echo @form_textarea('siteAddress', set_value('siteAddress', $data['siteAddress']), 'id="siteAddress" class="formelement small"'); ?>
 	<br class="clear" />
 
-	<label for="siteCountry">Country:</label>
+	<label for="siteCountry">País:</label>
 	<?php echo display_countries('siteCountry', $data['siteCountry'], 'id="siteCountry" class="formelement"'); ?>
 	<br class="clear" /><br />
 	
 <?php if (@in_array('emailer', $this->permission->permissions)): ?>
 	
-	<label for="emailerEmail">From Email:</label>
+	<label for="emailerEmail">E-mail de envio:</label>
 	<?php echo @form_input('emailerEmail', set_value('emailerEmail', $data['emailerEmail']), 'id="emailerEmail" class="formelement"'); ?>
-	<span class="tip">The email address from which emails will be sent (must be a Fully Qualified Domain Name).</span><br class="clear" />
+	<span class="tip">Este endereço de e-mail será de onde será enviado.</span><br class="clear" />
 	
 	<label for="emailerName">From Name:</label>
 	<?php echo @form_input('emailerName', set_value('emailerName', $data['emailerName']), 'id="emailerName" class="formelement"'); ?>
@@ -106,25 +106,25 @@ $(function(){
 
 <?php endif; ?>	
 	
-	<h2>Site Preferences</h2>	
+	<h2>Preferências do site</h2>
 	
-	<label for="headlines">Time Zone:</label>
+	<label for="headlines">Fuso horário:</label>
 	<?php echo timezone_menu($data['timezone'], 'formelement', 'timezone'); ?>
 	<br class="clear" />
 	
-	<label for="dateOrder">Date Format:</label>
+	<label for="dateOrder">Formato da data:</label>
 	<?php
 		$values = '';
 		$values = array(
-			'DM' => 'Day/Month',
-			'MD' => 'Month/Day'
+			'DM' => 'Dia/Mês',
+			'MD' => 'Mês/Dia'
 		);
 	?>
 	<?php echo @form_dropdown('dateOrder', $values, set_value('dateOrder', $data['dateOrder']), 'id="dateOrder" class="formelement"'); ?>
-	<span class="tip">Select how you prefer dates to show.</span>
+	<span class="tip">Selecione qual o formato.</span>
 	<br class="clear" />
 	
-	<label for="paging">Results per Page:</label>
+	<label for="paging">Resultado por páginas:</label>
 	<?php
 		$values = '';
 		$values = array(
@@ -136,10 +136,10 @@ $(function(){
 		);
 	?>
 	<?php echo @form_dropdown('paging', $values, set_value('paging', $data['paging'], 20), 'id="paging" class="formelement"'); ?>
-	<span class="tip">Select how many results you want to show in result pages.</span>
+	<span class="tip">Selecione a quantidade de resultado aparecerá por páginas.</span>
 	<br class="clear" />
 	
-	<label for="headlines">Headlines:</label>
+	<label for="headlines">Destaques:</label>
 	<?php
 		$values = '';
 		$values = array(
@@ -157,67 +157,67 @@ $(function(){
 		);
 	?>
 	<?php echo @form_dropdown('headlines', $values, set_value('headlines', $data['headlines'], 20), 'id="headlines" class="formelement"'); ?>
-	<span class="tip">Select how many headlines you want to show for modules such as blog.</span>
+	<span class="tip">Selecione quandos destaques quer que apareça no módulo de notícias.</span>
 	<br class="clear" />
 	
 </div>
 
 <div id="emailsconfig" class="tab">
 
-	<h2>Emails</h2>
+	<h2>E-mails</h2>
 	
-	<label for="emailHeader">Email Header:</label>
+	<label for="emailHeader">Cabeçário dos E-mails:</label>
 	<?php echo @form_textarea('emailHeader', set_value('emailHeader', $data['emailHeader']), 'id="emailHeader" class="formelement small"'); ?>
 	<br class="clear" />
-	<span class="tip nolabel">Customise the beginning of the emails that are sent out. You can personalise the email by using {name} and {email}.</span>
+	<span class="tip nolabel">Personalize o inicio dos e-mails que serão enviados. Você pode personalizar usando {name} e {email}.</span>
 	<br class="clear" /><br />
 	
-	<label for="emailFooter">Email Footer:</label>
+	<label for="emailFooter">Rodapé E-mail:</label>
 	<?php echo @form_textarea('emailFooter', set_value('emailFooter', $data['emailFooter']), 'id="emailFooter" class="formelement small"'); ?>
 	<br class="clear" />
-	<span class="tip nolabel">Customise the end of the emails that are sent out.</span>
+	<span class="tip nolabel">Personalize o final dos e-mails que serão enviados.</span>
 	<br class="clear" /><br />
 	
-	<label for="emailTicket">Ticket Email:</label>
+	<label for="emailTicket">Ticket E-mail:</label>
 	<?php echo @form_textarea('emailTicket', set_value('emailTicket', $data['emailTicket']), 'id="emailTicket" class="formelement small"'); ?>
 	<br class="clear" />
-	<span class="tip nolabel">Customise the email sent out for new tickets.</span>
+	<span class="tip nolabel">Personalize os emails que serão enviados em Novo tickets.</span>
 	<br class="clear" /><br />
 	
 	<?php if (@in_array('community', $this->permission->sitePermissions)): ?>
 	
-		<label for="emailAccount">New Account Email:</label>
+		<label for="emailAccount">Nova conta de E-mail:</label>
 		<?php echo @form_textarea('emailAccount', set_value('emailAccount', $data['emailAccount']), 'id="emailAccount" class="formelement small"'); ?>
 		<br class="clear" />
-		<span class="tip nolabel">Customise the email sent out for newly created accounts.</span>
+		<span class="tip nolabel">Personalize o email de nova conta criada.</span>
 		<br class="clear" /><br />
 	
 	<?php endif; ?>
 	
 	<?php if (@in_array('shop', $this->permission->sitePermissions)): ?>
 	
-		<label for="emailOrder">Shop Order Email:</label>
+		<label for="emailOrder">E-mail de pedidos da Loja:</label>
 		<?php echo @form_textarea('emailOrder', set_value('emailOrder', $data['emailOrder']), 'id="emailOrder" class="formelement small"'); ?>
 		<br class="clear" />
-		<span class="tip nolabel">Customise the email sent out for new shop orders.</span>
+		<span class="tip nolabel">Personalize o email de novo pedido na Loja.</span>
 		<br class="clear" /><br />
 		
-		<label for="emailDispatch">Shipping Email:</label>
+		<label for="emailDispatch">E-Mail de Frete:</label>
 		<?php echo @form_textarea('emailDispatch', set_value('emailDispatch', $data['emailDispatch']), 'id="emailDispatch" class="formelement small"'); ?>
 		<br class="clear" />
-		<span class="tip nolabel">Customise the email sent out when orders are shipped.</span>
+		<span class="tip nolabel">Personalize o e-mail de frete.</span>
 		<br class="clear" /><br />
 	
-		<label for="emailDonation">Donation Email:</label>
+		<label for="emailDonation">E-mail de doação:</label>
 		<?php echo @form_textarea('emailDonation', set_value('emailDonation', $data['emailDonation']), 'id="emailDonation" class="formelement small"'); ?>
 		<br class="clear" />
-		<span class="tip nolabel">Customise the email sent out for new donations.</span>
+		<span class="tip nolabel">Personalize o e-mail de nova doação.</span>
 		<br class="clear" /><br />
 	
-		<label for="emailSubscription">Subscription Email:</label>
+		<label for="emailSubscription">E-mail de cadastro:</label>
 		<?php echo @form_textarea('emailSubscription', set_value('emailSubscription', $data['emailSubscription']), 'id="emailSubscription" class="formelement small"'); ?>
 		<br class="clear" />
-		<span class="tip nolabel">Customise the email send out for new subscriptions.</span>
+		<span class="tip nolabel">Personalize o e-mail de envio de cadastro.</span>
 		<br class="clear" /><br />
 
 	<?php endif; ?>
@@ -228,21 +228,21 @@ $(function(){
 
 <div id="shopconfig" class="tab">
 
-	<h2>Shop Preferences</h2>
+	<h2>Preferências da Loja</h2>
 	
 	<label for="currency">Currency:</label>
 	<?php echo @form_dropdown('currency', currencies(), set_value('currency', $data['currency']), 'id="currency" class="formelement"'); ?>
 	<br class="clear" />
 
-	<label for="shopGateway">Payment Gateway:</label>
+	<label for="shopGateway">Formas de Pagamentos:</label>
 	<?php
 		$values = '';
 		$values = array(
-			'paypal' => 'PayPal',
-			'paypalpro' => 'PayPal Pro',
-			'authorize' => 'Authorize.net',
+			'paypal'      => 'PayPal',
+			'paypalpro'   => 'PayPal Pro',
+			'authorize'   => 'Authorize.net',
 			'rbsworldpay' => 'RBS Worldpay',
-			'sagepay' => 'SagePay'
+			'sagepay'     => 'SagePay'
 		);
 	?>
 	<?php echo @form_dropdown('shopGateway', $values, set_value('shopGateway', $data['shopGateway']), 'id="shopGateway" class="formelement"'); ?>
@@ -261,12 +261,12 @@ $(function(){
 	<?php echo @form_input('shopItemsPerRow', set_value('shopItemsPerRow', $data['shopItemsPerRow']), 'id="shopItemsPerRow" class="formelement"'); ?>
 	<br class="clear" />
 	
-	<label for="shopFreePostage">Free Shipping?:</label>
+	<label for="shopFreePostage">Frete grátis?:</label>
 	<?php
 		$values = '';
 		$values = array(
-			0 => 'No',
-			1 => 'Yes'
+			0 => 'Não',
+			1 => 'Sim'
 		);
 	?>
 	<?php echo @form_dropdown('shopFreePostage', $values, set_value('shopFreePostage', $data['shopFreePostage']), 'id="shopFreePostage" class="formelement"'); ?>
@@ -277,7 +277,7 @@ $(function(){
 	<span class="tip">The rate at which free postage is triggered.</span>
 	<br class="clear" />
 	
-	<label for="shopStockControl">Stock Control:</label>
+	<label for="shopStockControl">Controle de estoque:</label>
 	<?php
 		$values = '';
 		$values = array(
@@ -356,23 +356,23 @@ $(function(){
 
 <?php if (@in_array('community', $this->permission->sitePermissions)): ?>
 
-	<h2>Community Preferences</h2>
+	<h2>Preferências de Comunidade</h2>
 
-	<label for="activation">Manual Activation:</label>
+	<label for="activation">Ativação manual:</label>
 	<?php
 		$values = '';
 		$values = array(
-			0 => 'No',
-			1 => 'Yes'
+			0 => 'Não',
+			1 => 'Sim'
 		);
 	?>
 	<?php echo @form_dropdown('activation', $values, set_value('activation', $data['activation']), 'id="activation" class="formelement"'); ?>
-	<span class="tip">Do users require manual activation?</span><br class="clear" /><br />
+	<span class="tip">O usuário requer ativação manual?</span><br class="clear" /><br />
 
 <?php endif; ?>
 
 </div>
 
-<p class="clear" style="text-align: right;"><a href="#" class="button grey" id="totop">Back to top</a></p>
+<p class="clear" style="text-align: right;"><a href="#" class="button grey" id="totop">Volta para o topo</a></p>
 	
 </form>

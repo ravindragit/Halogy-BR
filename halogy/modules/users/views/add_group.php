@@ -33,10 +33,10 @@ $(function(){
 
 <form method="post" action="<?php echo site_url($this->uri->uri_string()); ?>" class="default">
 
-	<h1 class="headingleft">Add User Group <small>(<a href="<?php echo site_url('/admin/users/groups'); ?>">Back to User Groups</a>)</small></h1>
+	<h1 class="headingleft">Adicionar Grupo de usuários <small>(<a href="<?php echo site_url('/admin/users/groups'); ?>">Voltar para Grupo de usuários</a>)</small></h1>
 
 	<div class="headingright">
-		<input type="submit" value="Save Changes" class="button" />
+		<input type="submit" value="Salvar atualizações" class="button" />
 	</div>
 	
 	<div class="clear"></div>
@@ -47,22 +47,22 @@ $(function(){
 		</div>
 	<?php endif; ?>
 
-	<label for="groupName">Name this group:</label><br class="clear" />
+	<label for="groupName">Nome do grupo:</label><br class="clear" />
 	<?php echo @form_input('groupName',set_value('groupName', $data['groupName']), 'id="groupName" class="formelement"'); ?>
 	<br class="clear" /><br />
 
 	<?php if ($permissions): ?>
 
-	<h3>Administrative Permissions</h3>
+	<h3>Permissões administrativas</h3>
 	
-	<p><a href="#" class="selectall button small nolabel grey">Select All</a> <a href="#" class="deselectall button small grey">De-Select All</a></p>
+	<p><a href="#" class="selectall button small nolabel grey">Marcar todas</a> <a href="#" class="deselectall button small grey">Desmarcar todas</a></p>
 	
 	<?php foreach ($permissions as $cat => $perms): ?>
 
 		<div class="perm-heading">
 			<label for="<?php echo strtolower($cat); ?>_all" class="radio"><?php echo $cat; ?></label>
 			<input type="checkbox" class="selectall checkbox" id="<?php echo strtolower($cat); ?>_all" />
-			<input type="button" value="See more" class="seemore small-button" />
+			<input type="button" value="Veja mais" class="seemore small-button" />
 		</div>
 
 		<div class="permissions">
@@ -81,6 +81,6 @@ $(function(){
 	<?php endif; ?>
 
 
-	<p class="clear" style="text-align: right;"><a href="#" class="button grey" id="totop">Back to top</a></p>
+	<p class="clear" style="text-align: right;"><a href="#" class="button grey" id="totop">Voltar para o topo</a></p>
 	
 </form>

@@ -23,26 +23,26 @@ $(function(){
 });
 </script>
 
-<h1 class="headingleft">Users</h1>
+<h1 class="headingleft">Usuários</h1>
 
 <div class="headingright">
 
 	<form method="post" action="<?php echo site_url('/admin/users/viewall'); ?>" class="default" id="search">
-		<input type="text" name="searchbox" id="searchbox" class="formelement inactive" title="Search Users..." />
+		<input type="text" name="searchbox" id="searchbox" class="formelement inactive" title="Buscar usuários..." />
 		<input type="image" src="<?php echo $this->config->item('staticPath'); ?>/images/btn_search.gif" id="searchbutton" />
 	</form>
 
 	<?php if (in_array('users_import', $this->permission->permissions)): ?>
-		<a href="<?php echo site_url('/admin/users/import'); ?>" class="button blue">Import Users</a>
-		<a href="<?php echo site_url('/admin/users/export'); ?>" class="button blue">Export Users</a>		
+		<a href="<?php echo site_url('/admin/users/import'); ?>" class="button blue">Importar usuários</a>
+		<a href="<?php echo site_url('/admin/users/export'); ?>" class="button blue">Exportar usuários</a>		
 	<?php endif; ?>
 
 	<?php if (in_array('users_groups', $this->permission->permissions)): ?>
-		<a href="<?php echo site_url('/admin/users/groups'); ?>" class="button blue">Groups</a>
+		<a href="<?php echo site_url('/admin/users/groups'); ?>" class="button blue">Grupos</a>
 	<?php endif; ?>	
 
 	<?php if (in_array('users_edit', $this->permission->permissions)): ?>
-		<a href="<?php echo site_url('/admin/users/add'); ?>" class="button">Add User</a>
+		<a href="<?php echo site_url('/admin/users/add'); ?>" class="button">Novo usuário</a>
 	<?php endif; ?>
 </div>
 
@@ -53,10 +53,10 @@ $(function(){
 <table class="default clear">
 	<tr>
 		<th><?php echo order_link('/admin/users/viewall','username','Username'); ?></th>
-		<th><?php echo order_link('/admin/users/viewall','datecreated','Date Created'); ?></th>
-		<th><?php echo order_link('/admin/users/viewall','lastname','Name'); ?></th>
-		<th><?php echo order_link('/admin/users/viewall','email','Email'); ?></th>
-		<th><?php echo order_link('/admin/users/viewall','groupid','Group'); ?></th>
+		<th><?php echo order_link('/admin/users/viewall','datecreated','Data de criação'); ?></th>
+		<th><?php echo order_link('/admin/users/viewall','lastname','Nome'); ?></th>
+		<th><?php echo order_link('/admin/users/viewall','email','E-mail'); ?></th>
+		<th><?php echo order_link('/admin/users/viewall','groupid','Grupo'); ?></th>
 		<th class="tiny">&nbsp;</th>
 		<th class="tiny">&nbsp;</th>		
 	</tr>
@@ -77,19 +77,19 @@ $(function(){
 		<td><?php echo $user['email']; ?></td>
 		<td>
 			<?php
-				if ($user['groupID'] == $this->site->config['groupID'] || $user['groupID'] < 0) echo 'Administrator';
+				if ($user['groupID'] == $this->site->config['groupID'] || $user['groupID'] < 0) echo 'Administrador';
 				elseif (@in_array($user['groupID'], $adminGroups)) echo $userGroups[$user['groupID']];
 				elseif (@in_array($user['groupID'], $normalGroups)) echo $userGroups[$user['groupID']];
 			?>
 		</td>
 		<td class="tiny">
 			<?php if (in_array('users_edit', $this->permission->permissions)): ?>
-				<?php echo anchor('/admin/users/edit/'.$user['userID'], 'Edit'); ?>
+				<?php echo anchor('/admin/users/edit/'.$user['userID'], 'Editar'); ?>
 			<?php endif; ?>
 		</td>
 		<td class="tiny">
 			<?php if (in_array('users_delete', $this->permission->permissions)): ?>
-				<?php echo anchor('/admin/users/delete/'.$user['userID'], 'Delete', 'onclick="return confirm(\'Are you sure you want to delete this?\')"'); ?>
+				<?php echo anchor('/admin/users/delete/'.$user['userID'], 'Apagar', 'onclick="return confirm(\'Tem certeza que deseja apagar?\')"'); ?>
 			<?php endif; ?>
 
 		</td>
@@ -99,11 +99,11 @@ $(function(){
 
 <?php echo $this->pagination->create_links(); ?>
 
-<p style="text-align: right;"><a href="#" class="button grey" id="totop">Back to top</a></p>
+<p style="text-align: right;"><a href="#" class="button grey" id="totop">Voltar para o topo</a></p>
 
 <?php else: ?>
 
-<p class="clear">No users found.</p>
+<p class="clear">Nenhum usuário encontrado.</p>
 
 <?php endif; ?>
 

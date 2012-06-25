@@ -12,6 +12,7 @@
 
 		
 			<p class="copyright">Powered by <a href="http://www.halogy.com" title="Halogy">Halogy</a></p>
+			<p class="copyright">Versão brasileira <a href="http://www.everlon.com.br" title="Everlon Passos">Everlon Passos</a></p>
 			
 			<br />
 			
