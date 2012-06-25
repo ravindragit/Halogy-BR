@@ -30,7 +30,7 @@ $(function(){
 });
 </script>
 
-<h1 class="headingleft">Pages</h1>
+<h1 class="headingleft">Páginas</h1>
 
 <div class="headingright">
 
@@ -39,14 +39,14 @@ $(function(){
 	</label> 
 
 	<select id="collapse">
-		<option value="all">Show all</option>		
-		<option value="hidden">Hide hidden pages</option>
-		<option value="collapse">Hide sub-pages</option>		
-		<option value="drafts">Hide drafts</option>		
+		<option value="all">Mostrar todas</option>		
+		<option value="hidden">Não mostrar páginas ocultas</option>
+		<option value="collapse">Ocultar sub-páginas</option>		
+		<option value="drafts">Ocultar rascunhos</option>		
 	</select>
 	
 	<?php if (in_array('pages_edit', $this->permission->permissions)): ?>	
-		<a href="<?php echo site_url('/admin/pages/add'); ?>" class="button">Add Page</a>
+		<a href="<?php echo site_url('/admin/pages/add'); ?>" class="button">Nova página</a>
 	<?php endif; ?>
 </div>
 
@@ -68,35 +68,35 @@ $(function(){
 				<?php if ($page['active']): ?>
 					<span style="color:green">
 						<?php if ($page['redirect']): ?>
-							<strong>Redirect</strong> (<?php echo $page['redirect']; ?>)
+							<strong>Ir para</strong> (<?php echo $page['redirect']; ?>)
 						<?php else: ?>
 							<?php if ($page['active'] && $page['datePublished'] > 0 && ($page['newBlocks'] > 0 || $page['newVersions'] > 0)): ?>
-								<strong>Published (but modified)</strong>
+								<strong>Publicada (modificada)</strong>
 							<?php else: ?>
-								<strong>Published</strong>
+								<strong>Publicada</strong>
 							<?php endif; ?>
 							<?php echo (!$page['navigation']) ? ' (hidden)' : ''; ?>
 						<?php endif; ?>						
 					</span>
 				<?php else: ?>
-					Draft
+					Rascunho
 					<?php echo (!$page['navigation']) ? ' (hidden)' : ''; ?>
 				<?php endif; ?>
 				<br />
 				<?php if ($page['active'] && (!$page['newBlocks'] && !$page['newVersions'])): ?>
-					<small>Published: <strong><?php echo dateFmt($page['datePublished'], '', '', TRUE); ?></strong> 
+					<small>Publicada em: <strong><?php echo dateFmt($page['datePublished'], '', '', TRUE); ?></strong> 
 				<?php else: ?>
-					<small>Modified: <strong><?php echo dateFmt($page['dateModified'], '', '', TRUE); ?></strong> 
+					<small>Modificada em: <strong><?php echo dateFmt($page['dateModified'], '', '', TRUE); ?></strong> 
 				<?php endif; ?>
 				<em>by <?php echo $this->core->lookup_user($page['userID'], TRUE); ?></em></small>
 			</div>
 			<div class="buttons">
 				<?php echo anchor($page['uri'], '<img src="'.$this->config->item('staticPath').'/images/btn_view.png" alt="View" title="View" />'); ?>
 				<?php if (in_array('pages_edit', $this->permission->permissions)): ?>
-					<?php echo anchor('/admin/pages/edit/'.$page['pageID'], '<img src="'.$this->config->item('staticPath').'/images/btn_edit.png" alt="Edit" title="Edit" />'); ?>
+					<?php echo anchor('/admin/pages/edit/'.$page['pageID'], '<img src="'.$this->config->item('staticPath').'/images/btn_edit.png" alt="Edit" title="Editar" />'); ?>
 				<?php endif; ?>
 				<?php if (in_array('pages_delete', $this->permission->permissions)): ?>
-					<?php echo anchor('/admin/pages/delete/'.$page['pageID'], '<img src="'.$this->config->item('staticPath').'/images/btn_delete.png" alt="Delete" title="Delete" />', 'onclick="return confirm(\'Are you sure you want to delete this?\')"'); ?>
+					<?php echo anchor('/admin/pages/delete/'.$page['pageID'], '<img src="'.$this->config->item('staticPath').'/images/btn_delete.png" alt="Delete" title="Apagar" />', 'onclick="return confirm(\'Deseja realmente apagar?\')"'); ?>
 				<?php endif; ?>
 			</div>
 			<div class="clear"></div>
@@ -114,35 +114,35 @@ $(function(){
 							<?php if ($child['active']): ?>
 								<span style="color:green">
 									<?php if ($child['redirect']): ?>
-										<strong>Redirect</strong> (<?php echo $child['redirect']; ?>)
+										<strong>Vai para</strong> (<?php echo $child['redirect']; ?>)
 									<?php else: ?>
 									<?php if ($child['active'] && $child['datePublished'] > 0 && ($child['newBlocks'] > 0 || $child['newVersions'] > 0)): ?>
-										<strong>Published (but modified)</strong>
+										<strong>Publicada (modificada)</strong>
 									<?php else: ?>
-										<strong>Published</strong>
+										<strong>Publicada</strong>
 									<?php endif; ?>
-										<?php echo (!$child['navigation']) ? ' (hidden)' : ''; ?>
+										<?php echo (!$child['navigation']) ? ' (oculta)' : ''; ?>
 									<?php endif; ?>						
 								</span>
 							<?php else: ?>
-								Draft
-								<?php echo (!$child['navigation']) ? ' (hidden)' : ''; ?>
+								Rascunho
+								<?php echo (!$child['navigation']) ? ' (oculta)' : ''; ?>
 							<?php endif; ?>
 							<br />
 							<?php if ($child['active'] && (!$child['newBlocks'] && !$child['newVersions'])): ?>
-								<small>Published: <strong><?php echo dateFmt($child['datePublished'], '', '', TRUE); ?></strong> 
+								<small>Publicada em: <strong><?php echo dateFmt($child['datePublished'], '', '', TRUE); ?></strong> 
 							<?php else: ?>
-								<small>Modified: <strong><?php echo dateFmt($child['dateModified'], '', '', TRUE); ?></strong> 
+								<small>Modificada em: <strong><?php echo dateFmt($child['dateModified'], '', '', TRUE); ?></strong> 
 							<?php endif; ?>
 							<em>by <?php echo $this->core->lookup_user($child['userID'], TRUE); ?></em></small>
 						</div>
 						<div class="buttons">
-							<?php echo anchor($child['uri'], '<img src="'.$this->config->item('staticPath').'/images/btn_view.png" alt="View" title="View" />'); ?>
+							<?php echo anchor($child['uri'], '<img src="'.$this->config->item('staticPath').'/images/btn_view.png" alt="Visualizar" title="Visualizar" />'); ?>
 							<?php if (in_array('pages_edit', $this->permission->permissions)): ?>
-								<?php echo anchor('/admin/pages/edit/'.$child['pageID'], '<img src="'.$this->config->item('staticPath').'/images/btn_edit.png" alt="Edit" title="Edit" />'); ?>
+								<?php echo anchor('/admin/pages/edit/'.$child['pageID'], '<img src="'.$this->config->item('staticPath').'/images/btn_edit.png" alt="Editar" title="Editar" />'); ?>
 							<?php endif; ?>
 							<?php if (in_array('pages_delete', $this->permission->permissions)): ?>
-								<?php echo anchor('/admin/pages/delete/'.$child['pageID'], '<img src="'.$this->config->item('staticPath').'/images/btn_delete.png" alt="Delete" title="Delete" />', 'onclick="return confirm(\'Are you sure you want to delete this?\')"'); ?>
+								<?php echo anchor('/admin/pages/delete/'.$child['pageID'], '<img src="'.$this->config->item('staticPath').'/images/btn_delete.png" alt="Apagar" title="Apagar" />', 'onclick="return confirm(\'Deseja realmente apagar?\')"'); ?>
 							<?php endif; ?>
 						</div>
 						<div class="clear"></div>
@@ -160,35 +160,35 @@ $(function(){
 										<?php if ($subchild['active']): ?>
 											<span style="color:green">
 												<?php if ($subchild['redirect']): ?>
-													<strong>Redirect</strong> (<?php echo $subchild['redirect']; ?>)
+													<strong>Vai para</strong> (<?php echo $subchild['redirect']; ?>)
 												<?php else: ?>
 												<?php if ($subchild['active'] && $subchild['datePublished'] > 0 && ($subchild['newBlocks'] > 0 || $subchild['newVersions'] > 0)): ?>
-													<strong>Published (but modified)</strong>
+													<strong>Publicada (modificada)</strong>
 												<?php else: ?>
-													<strong>Published</strong>
+													<strong>Publicada</strong>
 												<?php endif; ?>
-													<?php echo (!$subchild['navigation']) ? ' (hidden)' : ''; ?>
+													<?php echo (!$subchild['navigation']) ? ' (oculta)' : ''; ?>
 												<?php endif; ?>						
 											</span>
 										<?php else: ?>
 											Draft
-											<?php echo (!$subchild['navigation']) ? ' (hidden)' : ''; ?>
+											<?php echo (!$subchild['navigation']) ? ' (oculta)' : ''; ?>
 										<?php endif; ?>
 										<br />
 										<?php if ($subchild['active'] && (!$subchild['newBlocks'] && !$subchild['newVersions'])): ?>
-											<small>Published: <strong><?php echo dateFmt($subchild['datePublished'], '', '', TRUE); ?></strong> 
+											<small>Publicada: <strong><?php echo dateFmt($subchild['datePublished'], '', '', TRUE); ?></strong> 
 										<?php else: ?>
-											<small>Modified: <strong><?php echo dateFmt($subchild['dateModified'], '', '', TRUE); ?></strong> 
+											<small>Modificada: <strong><?php echo dateFmt($subchild['dateModified'], '', '', TRUE); ?></strong> 
 										<?php endif; ?>
 										<em>by <?php echo $this->core->lookup_user($subchild['userID'], TRUE); ?></em></small>
 									</div>
 									<div class="buttons">
-										<?php echo anchor($subchild['uri'], '<img src="'.$this->config->item('staticPath').'/images/btn_view.png" alt="View" title="View" />'); ?>
+										<?php echo anchor($subchild['uri'], '<img src="'.$this->config->item('staticPath').'/images/btn_view.png" alt="Visualizar" title="Visualizar" />'); ?>
 										<?php if (in_array('pages_edit', $this->permission->permissions)): ?>
-											<?php echo anchor('/admin/pages/edit/'.$subchild['pageID'], '<img src="'.$this->config->item('staticPath').'/images/btn_edit.png" alt="Edit" title="Edit" />'); ?>
+											<?php echo anchor('/admin/pages/edit/'.$subchild['pageID'], '<img src="'.$this->config->item('staticPath').'/images/btn_edit.png" alt="Editar" title="Editar" />'); ?>
 										<?php endif; ?>
 										<?php if (in_array('pages_delete', $this->permission->permissions)): ?>
-											<?php echo anchor('/admin/pages/delete/'.$subchild['pageID'], '<img src="'.$this->config->item('staticPath').'/images/btn_delete.png" alt="Delete" title="Delete" />', 'onclick="return confirm(\'Are you sure you want to delete this?\')"'); ?>
+											<?php echo anchor('/admin/pages/delete/'.$subchild['pageID'], '<img src="'.$this->config->item('staticPath').'/images/btn_delete.png" alt="Apagar" title="Apagar" />', 'onclick="return confirm(\'Deseja realmente apagar?\')"'); ?>
 										<?php endif; ?>
 									</div>
 									<div class="clear"></div>
@@ -211,10 +211,10 @@ $(function(){
 	
 	<br />
 	
-	<p style="text-align: right;"><a href="#" class="button grey" id="totop">Back to top</a></p>
+	<p style="text-align: right;"><a href="#" class="button grey" id="totop">Voltar ao topo</a></p>
 
 <?php else: ?>
 
-<p class="clear">No pages were found.</p>
+<p class="clear">Nenhuma página encontrada.</p>
 
 <?php endif; ?>
